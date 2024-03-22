@@ -7,27 +7,27 @@ So why *do* New Yorkers have such strong opinions about certain services? Are th
 
 ## Train Frequencies
 
-
---- hourly frequencies for all trains 
+### Number of Trainsets Running at One Time
 The primary question that sparked this project is this: **how many trainsets are running in the NYC subway system at any one time?**. While this seems like a simple question, it's surprisingly complex: given a schedule, how do we know that a train is running at the exact time that we're investigating? How can scale our investigation to all hours of the day? My approach was to find the length of time it takes to run a route (one terminal to the other) and divide that by the hourly tph. With this, I am able to determine the average number of trains running at that hour. 
 
 I found that there are an average of around 284 trainsets running at any one time in the NYC Subway! That's a ton of equipment being moved! Further, during afternoon rush hour on weekdays (4 p.m. to be exact) there can be up to 496 trainsets running at once! On the other end of the spectrum, as few as 119 trainsets can be running. Still quite an impressive feat! See the below chart for how the number of trains running in the NYC Subway vary by day and hour:
 
-![](saved_data/hourly_number_of_trains_by_day.png)
+![](images/hourly_number_of_trains_by_day.png)
 
 Once can clearly see the increase in service that a.m. and p.m. rush hours get during weekdays. Additionally, one can see the evenness that all late night service gets, no matter the day of the week.
 
----- service by train time interval 
+### Service by Different Time Periods 
 Speaking of service by time period, It may be easier to divide the train schedule into time intervals (see this (wikipedia article)[https://en.wikipedia.org/wiki/List_of_New_York_City_Subway_services#Train_intervals] for a breakdown). These train service intervals include: Rush Hour a.m., Rush Hour p.m., Midday, Weekend, Evening, and Late Night. Let's see how service differs for each of these 
 
-![](saved_data/interval_headways.png)
+![](images/interval_headways.png)
 
 This puts it even more into perspective how the wait time will differ depending on when you access the train. On average, people will wait 3 times as long for a train late night as compared to during either rush hour!
 
---- crowdedness by tph
+
+### The 15 Minute Subway City
 Using the frequencies of each train we can identify how long each person will have to wait in order to (most likely) get in a train. Given how the frequencies of trains are very different by station, how does that affect people in their day to day lives? Would I rather live a 7 minute walk away from a very well served train station or would I rather live a 2 minute walk away from a moderately well served station? To answer this, I calculated the area around a station that a person can live and still be likely to sit in a train within 15 minutes. In other words, I give more weight in the map to frequent stations than to less frequent stations (to the point that they disappear entirely in the case of the Rockaway Beach branches!).  
 
-![](saved_data/15_minute_city.jpg)
+![](images/15_minute_city.jpg)
 
 As you can see, some stations are much better to be close to. Just to take a clear example, being at the end of the Bay Ridge services (far bottom left in Brooklyn) is much worse than being near Coney Island (far bottom of greyed-out Brooklyn) even though both are terminal stations. Moreover, one can see ultra clearly where's a (subway) transit desert and where it is clearly not -- all of Manhattan versus eastern Queens is night and day in terms of subway service and therefore, reliability. 
 
@@ -40,7 +40,5 @@ Moreover, information about stations themselves are taken from two sources:
 2. MTA_Subway_Stations_and_Complexes
 
 The Hourly Ridership open dataset is queried to bring in station entrances for all stations at all hours for one whole week in March. The second dataset provides full information about all stations and complexes within the NYC subway system. This is used to aggregate stations in different lines to a single complex (e.g.: the "Whitehall St-South Ferry" complex has two stations within it: One for 1 train and one for the R and W trains).
-
-
 
 
