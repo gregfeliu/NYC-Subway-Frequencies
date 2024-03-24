@@ -17,7 +17,7 @@ I found that there are an average of around 284 trainsets running at any one tim
 Once can clearly see the increase in service that a.m. and p.m. rush hours get during weekdays. Additionally, one can see the evenness that all late night service gets, no matter the day of the week.
 
 ### Service by Different Time Periods 
-Speaking of service by time period, It may be easier to divide the train schedule into time intervals (see this (wikipedia article)[https://en.wikipedia.org/wiki/List_of_New_York_City_Subway_services#Train_intervals] for a breakdown). These train service intervals include: Rush Hour a.m., Rush Hour p.m., Midday, Weekend, Evening, and Late Night. Let's see how service differs for each of these 
+Speaking of service by time period, It may be easier to divide the train schedule into time intervals (see this [wikipedia article](https://en.wikipedia.org/wiki/List_of_New_York_City_Subway_services#Train_intervals) for a breakdown). These train service intervals include: Rush Hour a.m., Rush Hour p.m., Midday, Weekend, Evening, and Late Night. Let's see how service differs for each of these 
 
 ![](images/interval_headways.png)
 
