@@ -7,10 +7,10 @@ So why *do* New Yorkers have such strong opinions about certain services? Are th
 
 ## Train Frequencies
 
-### Number of Trainsets Running at One Time
-The primary question that sparked this project is this: **how many trainsets are running in the NYC subway system at any one time?**. While this seems like a simple question, it's surprisingly complex: given a schedule, how do we know that a train is running at the exact time that we're investigating? How can scale our investigation to all hours of the day? My approach was to find the length of time it takes to run a route (one terminal to the other) and divide that by the hourly tph. With this, I am able to determine the average number of trains running at that hour. 
+### Number of Train sets Running at One Time
+The primary question that sparked this project is this: **how many train sets are running in the NYC subway system at any one time?**. While this seems like a simple question, it's surprisingly complex: given a schedule, how do we know that a train is running at the exact time that we're investigating? How can scale our investigation to all hours of the day? My approach was to find the length of time it takes to run a route (one terminal to the other) and divide that by the hourly tph. With this, I am able to determine the average number of trains running at that hour. 
 
-I found that there are an average of around 284 trainsets running at any one time in the NYC Subway! That's a ton of equipment being moved! Further, during afternoon rush hour on weekdays (4 p.m. to be exact) there can be up to 496 trainsets running at once! On the other end of the spectrum, as few as 119 trainsets can be running. Still quite an impressive feat! See the below chart for how the number of trains running in the NYC Subway vary by day and hour:
+I found that there are an average of around 284 train sets running at any one time in the NYC Subway! That's a ton of equipment being moved! Further, during afternoon rush hour on weekdays (4 p.m. to be exact) there can be up to 496 train sets running at once! On the other end of the spectrum, as few as 119 train sets can be running. Still quite an impressive feat! See the below chart for how the number of trains running in the NYC Subway vary by day and hour:
 
 ![](images/hourly_number_of_trains_by_day.png)
 
@@ -34,10 +34,10 @@ As you can see, some stations are much better to be close to. Just to take a cle
 ## Data and Process 
 This project uses GTFS schedule data to learn about the differences between NYC subway services. This data is used to determine the frequency that a service runs throughout different time periods. Additionally, this information is used to calculate the amount of service provided at each subway station.
 
-Moreover, information about stations themselves are taken from two sources: 
+Moreover, information about stations themselves are taken from two open data sources: 
 
-1. NYC Open Data Subway Hourly Ridership open dataset
-2. MTA_Subway_Stations_and_Complexes
+1. [NYC Open Data Subway Hourly Ridership](https://data.ny.gov/Transportation/MTA-Subway-Hourly-Ridership-Beginning-February-202/wujg-7c2s/about_data)
+2. [MTA Subway Stations](https://data.ny.gov/Transportation/MTA-Subway-Stations-Map/p6ps-59h2)
 
 The Hourly Ridership open dataset is queried to bring in station entrances for all stations at all hours for one whole week in March. The second dataset provides full information about all stations and complexes within the NYC subway system. This is used to aggregate stations in different lines to a single complex (e.g.: the "Whitehall St-South Ferry" complex has two stations within it: One for 1 train and one for the R and W trains).
 
