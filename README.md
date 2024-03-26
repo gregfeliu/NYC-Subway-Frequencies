@@ -23,6 +23,13 @@ Speaking of service by time period, It may be easier to divide the train schedul
 
 This puts it even more into perspective how the wait time will differ depending on when you access the train. On average, people will wait 3 times as long for a train late night as compared to during either rush hour!
 
+### Service Level Comparison
+All subway services are most frequent during rush hours (6:30 - 9:30 a.m. and 3:30 - 8 p.m.). Using these time periods, I will show the amount of time between each scheduled train for each service so that we can compare the services: 
+
+![](images/service_comparison_rush_hour.png)
+
+As you can see, there's quite a lot of variation in the amount of time you might wait for a subway! The "H" train (Rockaway Shuttle) can make you wait up to about 17 minutes while the 7 will have you waiting less than 3 minutes. That's quite the difference! In between these two extremes, there's many shades of grey. In my personal experience, I was a frequent user of the G and have now switched to using the L. This project has finally confirmed my suspicions about the waiting time for these services: the worst case waiting time for the L is the normal waiting time for the G.
+
 
 ### The 15 Minute Subway City
 Using the frequencies of each train we can identify how long each person will have to wait in order to (most likely) get in a train. Given how the frequencies of trains are very different by station, how does that affect people in their day to day lives? Would I rather live a 7 minute walk away from a very well served train station or would I rather live a 2 minute walk away from a moderately well served station? To answer this, I calculated the area around a station that a person can live and still be likely to sit in a train within 15 minutes. In other words, I give more weight in the map to frequent stations than to less frequent stations (to the point that they disappear entirely in the case of the Rockaway Beach branches!).  
