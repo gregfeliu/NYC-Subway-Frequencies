@@ -21,7 +21,7 @@ train_area_df = pd.read_csv("saved_data/length_of_each_train.csv", index_col=0)
 
 ## Data Adjustments
 stop_times_df['departure_time']  = [str(int(x[0:2]) - 24) + x[2:] if int(x[0:2]) >= 24 else x
-                          for x in stop_times_df['departure_time']]
+                                    for x in stop_times_df['departure_time']]
 stop_times_df['departure_time'] = pd.to_datetime(stop_times_df['departure_time'], format="%H:%M:%S", errors='coerce')
 stop_times_df = group_into_day_type(stop_times_df, 'trip_id')
 
@@ -42,12 +42,15 @@ stop_times_df['trainset_area'] = stop_times_df['route_id'].replace(train_area_di
 
 # trains per hour during non-late nights
 # this includes both directions so I'm dividing by 2 to make it "per direction"
-trains_per_waking_hour_by_station = round(stop_times_df[stop_times_df['train_time_interval']!='Late Night'
-                                                  ].groupby('parent_stop_id').count() / 24 / 2, 2)[['trip_id']]
+# dividing by 7 to get single day and dividing by 18 non-late night hours
+non_late_night_stop_times_df = stop_times_df[stop_times_df['train_time_interval']!='Late Night']
+
+non_late_night_full_schedule = upsample_weekday_values(non_late_night_stop_times_df[['trip_id', 'parent_stop_id', 'day_of_week', 'trainset_area'
+                                                                                     , 'train_time_interval']], 'day_of_week')
+trains_per_waking_hour_by_station = round(non_late_night_full_schedule.groupby('parent_stop_id').count() / 18 / 7 / 2, 2)[['trip_id']]
 trains_per_waking_hour_by_station.reset_index(inplace=True)
 # train area per hour during weekdays per direction
-train_area_per_waking_hour_by_station = round(stop_times_df[stop_times_df['train_time_interval']!='Late Night'
-                                                  ].groupby('parent_stop_id').sum() / 24 / 2, 2)[['trainset_area']]
+train_area_per_waking_hour_by_station = round(non_late_night_full_schedule.groupby('parent_stop_id').sum() / 18 / 7 / 2, 2)[['trainset_area']]
 train_area_per_waking_hour_by_station.reset_index(inplace=True)
 train_info_per_waking_hour_by_station = pd.merge(trains_per_waking_hour_by_station
                                                   , train_area_per_waking_hour_by_station)
@@ -61,6 +64,27 @@ station_info_w_frequency = stations_df.merge(train_info_per_waking_hour_by_stati
 station_info_w_frequency = station_info_w_frequency.drop(columns=['parent_stop_id', 'Station ID'
                                                                   , 'GTFS Latitude', 'GTFS Longitude'
                                                                   , 'North Direction Label', 'South Direction Label'])
+## Making a wide df that shows tph for all time intervals for each station
+for idx, interval in enumerate(stop_times_df['train_time_interval'].unique()):
+    # some late night service will be null (since it went over 24 hours)
+    if interval:
+        station_frequency_interval_df = stop_times_df[stop_times_df['train_time_interval']==interval
+                                                    ].groupby('parent_stop_id').count()[['trip_id']]
+        station_frequency_interval_df.reset_index(inplace=True)
+        station_frequency_interval_df.columns = ['parent_stop_id', 'trains_per_hour']
+        # getting the data to be "per direction"
+        station_frequency_interval_df['trains_per_hour'] = station_frequency_interval_df['trains_per_hour'] / 2
+        station_frequency_interval_df['train_time_interval'] = interval
+        station_frequency_interval_df = scale_time_intervals_to_hour(station_frequency_interval_df)
+        station_frequency_interval_df = station_frequency_interval_df.round(1)
+        station_frequency_interval_df = station_frequency_interval_df.drop(columns=['train_time_interval'])
+        station_frequency_interval_df.columns=['parent_stop_id', interval]
+        # adding to total dataframe
+        station_info_w_frequency = station_info_w_frequency.merge(station_frequency_interval_df
+                                        , how='left', left_on='GTFS Stop ID', right_on='parent_stop_id')
+        # station_info_w_frequency.drop(columns=['parent_stop_id_x', 'parent_stop_id_y'], inplace=True)
+station_info_w_frequency.drop(columns=[col for col in station_info_w_frequency.columns 
+                                       if 'parent_stop_id' in col], axis=1, inplace=True)
 
 # Saving the Data 
 if not os.path.exists('saved_data'):
