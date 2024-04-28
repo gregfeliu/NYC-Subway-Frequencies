@@ -10,7 +10,7 @@ So why *do* New Yorkers have such strong opinions about certain services? Are th
 ### Number of Train sets Running at One Time
 The primary question that sparked this project is this: **how many train sets are running in the NYC subway system at any one time?**. While this seems like a simple question, it's surprisingly complex: given a schedule, how do we know that a train is running at the exact time that we're investigating? How can scale our investigation to all hours of the day? My approach was to find the length of time it takes to run a route (one terminal to the other) and divide that by the hourly tph. With this, I am able to determine the average number of trains running at that hour. 
 
-I found that there are an average of around 284 train sets running at any one time in the NYC Subway! That's a ton of equipment being moved! Further, during afternoon rush hour on weekdays (4 p.m. to be exact) there can be up to 496 train sets running at once! On the other end of the spectrum, as few as 119 train sets can be running. Still quite an impressive feat! See the below chart for how the number of trains running in the NYC Subway vary by day and hour:
+I found that there are an average of around 284 train sets running at any one time in the NYC Subway! That's a ton of equipment being moved! Further, during afternoon rush hour on weekdays (4 p.m. to be exact) there can be up to 490 train sets running at once! On the other end of the spectrum, as few as 119 train sets can be running. Still quite an impressive feat! See the below chart for how the number of trains running in the NYC Subway vary by day and hour:
 
 ![](images/hourly_number_of_trains_by_day.png)
 
@@ -30,11 +30,10 @@ All subway services are most frequent during rush hours (6:30 - 9:30 a.m. and 3:
 
 As you can see, there's quite a lot of variation in the amount of time you might wait for a subway! The "H" train (Rockaway Shuttle) can make you wait up to about 17 minutes while the 7 will have you waiting less than 3 minutes. That's quite the difference! In between these two extremes, there's many shades of grey. In my personal experience, I was a frequent user of the G and have now switched to using the L. This project has finally confirmed my suspicions about the waiting time for these services: the worst case waiting time for the L is the normal waiting time for the G.
 
-
 ### The 15 Minute Subway City
 Using the frequencies of each train we can identify how long each person will have to wait in order to (most likely) get in a train. Given how the frequencies of trains are very different by station, how does that affect people in their day to day lives? Would I rather live a 7 minute walk away from a very well served train station or would I rather live a 2 minute walk away from a moderately well served station? To answer this, I calculated the area around a station that a person can live and still be likely to sit in a train within 15 minutes. In other words, I give more weight in the map to frequent stations than to less frequent stations (to the point that they disappear entirely in the case of the Rockaway Beach branches!).  
 
-![](images/15_minute_city.jpg)
+![](images/movie.jpg)
 
 As you can see, some stations are much better to be close to. Just to take a clear example, being at the end of the Bay Ridge services (far bottom left in Brooklyn) is much worse than being near Coney Island (far bottom of greyed-out Brooklyn) even though both are terminal stations. Moreover, one can see ultra clearly where's a (subway) transit desert and where it is clearly not -- all of Manhattan versus eastern Queens is night and day in terms of subway service and therefore, reliability. 
 
