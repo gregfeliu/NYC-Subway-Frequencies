@@ -33,7 +33,7 @@ As you can see, there's quite a lot of variation in the amount of time you might
 ### The 15 Minute Subway City
 Using the frequencies of each train we can identify how long each person will have to wait in order to (most likely) get in a train. Given how the frequencies of trains are very different by station, how does that affect people in their day to day lives? Would I rather live a 7 minute walk away from a very well served train station or would I rather live a 2 minute walk away from a moderately well served station? To answer this, I calculated the area around a station that a person can live and still be likely to sit in a train within 15 minutes. In other words, I give more weight in the map to frequent stations than to less frequent stations (to the point that they disappear entirely in the case of the Rockaway Beach branches!).  
 
-![](images/movie.jpg)
+![](images/movie.gif)
 
 As you can see, some stations are much better to be close to. Just to take a clear example, being at the end of the Bay Ridge services (far bottom left in Brooklyn) is much worse than being near Coney Island (far bottom of greyed-out Brooklyn) even though both are terminal stations. Moreover, one can see ultra clearly where's a (subway) transit desert and where it is clearly not -- all of Manhattan versus eastern Queens is night and day in terms of subway service and therefore, reliability. 
 
