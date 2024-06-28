@@ -7,8 +7,9 @@ import datetime
 import calendar
 import time  
 import streamlit as st
-from streamlit_dynamic_filters import DynamicFilters
+# from streamlit_dynamic_filters import DynamicFilters
 from functions import *
+
 
 # title 
 st.title('NYC Subway Frequencies')
@@ -17,11 +18,11 @@ st.subheader('Frequencies for all Subway Services and Stations for all Possible 
 
 # data 
 ### hourly
-hourly_route_trip_freq = pd.read_csv("data/hourly_route_trip_freq.csv", index_col=0)
+hourly_route_trip_freq = pd.read_csv("streamlit_data/hourly_route_trip_freq.csv", index_col=0)
 ### daily
-daily_route_trip_freq = pd.read_csv("data/daily_route_trip_freq.csv", index_col=0)
+daily_route_trip_freq = pd.read_csv("streamlit_data/daily_route_trip_freq.csv", index_col=0)
 ### time interval
-trip_interval_route_freq = pd.read_csv("data/trip_interval_route_freq.csv", index_col=0)
+trip_interval_route_freq = pd.read_csv("streamlit_data/trip_interval_route_freq.csv", index_col=0)
 
 
 # tab selection 
@@ -57,7 +58,7 @@ with right_column:
     # this tries to run even if we select "Line", "Complex", "Station"
     filtered_df = filter_streamlit_level_of_detail_data(level_of_detail_filter, filtered_df)
 
-## time_freq control flow 
+# time_freq control flow 
 if time_freq in ['Daily', 'Hourly']:
     # daily_route_trip_freq
     filtered_df
