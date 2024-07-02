@@ -1,17 +1,13 @@
 # Creating Streamlit app
 ## Imports
 import pandas as pd 
-# import os
 import numpy as np
-# import datetime
-# import calendar
-# import time  
 import streamlit as st
 st.write(st.__version__)
 # from streamlit_dynamic_filters import DynamicFilters
 from functions import *
 
-st.write("Hello world")
+
 # title 
 st.title('NYC Subway Frequencies')
 ## st.subheader('All Scheduled Subways Services and Stations All of the Time')
