@@ -52,7 +52,7 @@ with right_column:
     level_of_detail_filter = st.multiselect('Select your service(s) to view:'
                                                 , level_of_detail_filter_options)
     # this tries to run even if we select "Line", "Complex", "Station"
-    filtered_df = filter_streamlit_level_of_detail_data(level_of_detail_filter, filtered_df)
+    # filtered_df = filter_streamlit_level_of_detail_data(level_of_detail_filter, filtered_df)
 
 # time_freq control flow 
 if time_freq in ['Daily', 'Hourly']:
