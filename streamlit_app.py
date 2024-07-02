@@ -15,12 +15,11 @@ st.subheader('Frequencies for all Subway Services and Stations for all Possible 
 
 # data 
 ### hourly
-hourly_route_trip_freq = pd.read_csv("data/hourly_route_trip_freq.csv", index_col=0)
+hourly_route_trip_freq = load_original_data('hourly_route_trip_freq')
 ### daily
-daily_route_trip_freq = pd.read_csv("data/daily_route_trip_freq.csv", index_col=0)
+daily_route_trip_freq = load_original_data('daily_route_trip_freq')
 ### time interval
-trip_interval_route_freq = pd.read_csv("data/trip_interval_route_freq.csv", index_col=0)
-
+trip_interval_route_freq = load_original_data('trip_interval_route_freq')
 
 # tab selection 
 tab_selector = st.sidebar.radio("How would you like to view the data?",

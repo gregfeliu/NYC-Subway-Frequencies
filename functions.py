@@ -2,7 +2,9 @@ import pandas as pd
 import datetime
 import time
 import calendar 
-
+from io import StringIO
+import streamlit as st
+import requests
 
 
 def determine_train_time_intervals(arrival_time, day_of_week: str):
@@ -78,13 +80,22 @@ def x_minute_subway(station_df:pd.DataFrame, minutes:int):
         meters_to_station_in_x_minutes.append(result)
     return meters_to_station_in_x_minutes
 
+def load_original_data(file_name:str):
+    url = f'https://raw.githubusercontent.com/gregfeliu/NYC-Subway-Frequencies/main/data/{file_name}.csv'
+    response = requests.get(url)
+    if response.status_code == 200:
+        return pd.read_csv(StringIO(response.text), index_col=0)
+    else:
+        st.error("Failed to load data from GitHub.")
+        return None
+
 def filter_streamlit_time_freq_data(time_freq:str):
     if time_freq == 'Hourly':
-        returned_df = pd.read_csv("data/hourly_route_trip_freq.csv", index_col=0)
+        returned_df = load_original_data('hourly_route_trip_freq')
     elif time_freq == "Daily":
-        returned_df = pd.read_csv("data/daily_route_trip_freq.csv", index_col=0)
+        returned_df = load_original_data('daily_route_trip_freq')
     elif time_freq == "Train Time Interval":
-        returned_df = pd.read_csv("data/trip_interval_route_freq.csv", index_col=0)
+        returned_df = load_original_data('trip_interval_route_freq')
     return returned_df
 
 
