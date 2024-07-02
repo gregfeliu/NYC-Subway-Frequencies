@@ -78,3 +78,13 @@ def x_minute_subway(station_df:pd.DataFrame, minutes:int):
         meters_to_station_in_x_minutes.append(result)
     return meters_to_station_in_x_minutes
 
+def filter_streamlit_time_freq_data(time_freq:str):
+    if time_freq == 'Hourly':
+        returned_df = pd.read_csv("data/hourly_route_trip_freq.csv", index_col=0)
+    elif time_freq == "Daily":
+        returned_df = pd.read_csv("data/daily_route_trip_freq.csv", index_col=0)
+    elif time_freq == "Train Time Interval":
+        returned_df = pd.read_csv("data/trip_interval_route_freq.csv", index_col=0)
+    return returned_df
+
+
