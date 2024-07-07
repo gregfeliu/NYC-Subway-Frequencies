@@ -2,6 +2,7 @@
 ## Imports
 import pandas as pd 
 import numpy as np
+import seaborn as sns 
 import streamlit as st
 st.write(st.__version__)
 # from streamlit_dynamic_filters import DynamicFilters
@@ -23,45 +24,113 @@ trip_interval_route_freq = load_original_data('trip_interval_route_freq')
 
 # tab selection 
 tab_selector = st.sidebar.radio("How would you like to view the data?",
-            ("About", "Table and Charts", "Map", "Fun Facts About the System"))
+            ("Home", "Service Comparisons", "Fun Facts About the System"))
 # st.sidebar.write(f"You selected *{tab_selector}*")
-if tab_selector == 'Fun Facts About the System':
+if tab_selector == "Home":
+    # MAIN SECTION
+    # user picks the time granularity
+    left_column, right_column,  = st.columns(2)
+    with left_column:
+        time_freq = st.selectbox(
+            "Time Frequency",
+            ("Hourly", "Daily", "Train Time Interval"))
+        filtered_df = choose_streamlit_time_freq_data(time_freq)
+    # user filters the data 
+    with right_column:
+        level_of_detail_filter_options = filtered_df.index.drop_duplicates()
+        level_of_detail_filter = st.multiselect('Select which service(s):'
+                                                    , level_of_detail_filter_options)
+        if level_of_detail_filter:
+            filtered_df = filter_streamit_data(filtered_df, service_filter=level_of_detail_filter)
+        if time_freq == 'Train Time Interval':
+            time_int_filter_options = filtered_df['Time Interval'].drop_duplicates()
+            time_int_filter = st.multiselect('Select which time interval(s):'
+                                                , time_int_filter_options)
+            filtered_df = filter_streamit_data(filtered_df, time_freq_filter=time_int_filter)
+        elif time_freq == 'Daily' or time_freq=='Hourly':
+            day_filter_options = filtered_df['Day of Week'].drop_duplicates()
+            day_filter = st.multiselect('Select which day(s):'
+                                                , day_filter_options)
+            filtered_df = filter_streamit_data(filtered_df, day_filter=day_filter)
+            if time_freq=='Hourly':
+                hour_filter_options = filtered_df['Hour'].drop_duplicates()
+                hour_filter = st.multiselect('Select which hour(s):'
+                                                , hour_filter_options)
+                filtered_df = filter_streamit_data(filtered_df, hour_filter=hour_filter)
+        filtered_df
+    
+elif tab_selector=="Service Comparisons":
+    # compare two services
+    left_column, right_column,  = st.columns(2)
+    with left_column:
+        # one time freq 
+        time_freq = st.selectbox(
+            "Time Frequency",
+            ("Hourly", "Daily", "Train Time Interval", "Overall"))
+        filtered_df = choose_streamlit_time_freq_data(time_freq)
+        # filters
+        level_of_detail_filter_options = filtered_df.index.drop_duplicates()
+        if time_freq == 'Train Time Interval':
+            time_int_filter_options = filtered_df['Time Interval'].drop_duplicates()
+            # one time intervals 
+            time_int_filter = st.selectbox('Select which time interval:'
+                                                , time_int_filter_options)
+            filtered_df = filter_streamit_data(filtered_df, time_freq_filter=[time_int_filter])
+        elif time_freq == 'Daily' or time_freq=='Hourly':
+            day_filter_options = filtered_df['Day of Week'].drop_duplicates()
+            # one day 
+            day_filter = st.selectbox('Select which day:'
+                                                , day_filter_options)
+            filtered_df = filter_streamit_data(filtered_df, day_filter=[day_filter])
+            if time_freq=='Hourly':
+                hour_filter_options = filtered_df['Hour'].drop_duplicates()
+                # multiple hours 
+                hour_filter = st.multiselect('Select which hour(s):'
+                                                , hour_filter_options
+                                                , default = 8)
+                filtered_df = filter_streamit_data(filtered_df, hour_filter=hour_filter)
+    with right_column:
+        service_1_selection_options = filtered_df.index.drop_duplicates()
+        service_1_selection = st.selectbox('Select which service(s):'
+                                                    , service_1_selection_options
+                                                    , placeholder="Please select a service to use in the comparison")
+        if service_1_selection:
+            filtered_df_service_one = filter_streamit_data(filtered_df, service_filter=[service_1_selection])
+        
+        service_2_selection_options = filtered_df.index.drop_duplicates()
+        if service_1_selection:
+            service_2_selection_options = service_2_selection_options.drop(service_1_selection)
+        service_2_selection = st.selectbox('Select which service(s):'
+                                                    , service_2_selection_options
+                                                    , placeholder="Please select a service to use in the comparison")
+        if service_2_selection:
+            filtered_df_service_two = filter_streamit_data(filtered_df, service_filter=[service_2_selection])
+
+    # compare service A to service B and show how they perform compared to the rest of the system
+        # allow user to pick 2 services (left side, the rest are on the right)
+    # determine the difference in frequency
+    service_level_1, service_level_2, service_difference = find_difference_in_service_levels(filtered_df_service_one, filtered_df_service_two)
+    service_difference_str = print_difference_in_service_levels(service_difference)
+    st.markdown(f"The **{service_1_selection}** is {service_difference_str} than the **{service_2_selection}** for the time period your selected")
+        
+    # displaying the differences
+
+        
+    # Display as text "service <x> has <y%> better service than service <z> for the selected time periods"
+    # show graph below 
+
+elif tab_selector == 'Fun Facts About the System':
     st.caption("""Use this app to find the frequency for any subway service or station
             in the system. Without looking at any schedules, you will
             be able to have an idea of how long a train will take to arrive
             at your station or for the service as a whole
             **To start, please select how you would like to view the data in the sidebar**""")
 
-# if tab_selector == "Table and Charts" or tab_selector == "Map": 
-
-# MAIN SECTION
-# user picks the time and level of detail 
-left_column, right_column,  = st.columns(2)
-with left_column:
-    time_freq = st.selectbox(
-        "Time Frequency",
-        ("Daily", "Train Time Interval", "Hourly"))
-    # the user selected filters and the data selection will probably have to be separate
-    filtered_df = filter_streamlit_time_freq_data(time_freq)
-
-with right_column:
-    level_of_detail = st.selectbox(
-        "Service Type",
-        ("Service", "Line", "Complex", "Station"))
-    level_of_detail_filter_options = filtered_df.index.drop_duplicates()
-    level_of_detail_filter = st.multiselect('Select your service(s) to view:'
-                                                , level_of_detail_filter_options)
-    # this tries to run even if we select "Line", "Complex", "Station"
-    # filtered_df = filter_streamlit_level_of_detail_data(level_of_detail_filter, filtered_df)
-
-# time_freq control flow 
+# Helpful information about the data in the sidebar and displaying the data
 if time_freq in ['Daily', 'Hourly']:
-    # daily_route_trip_freq
-    filtered_df
     st.sidebar.write(f"""The *{time_freq}* schedule has 3 categeories:
-                     Weekday, Saturdays, and Sundays.""")
+                    Weekday, Saturdays, and Sundays.""")
 elif time_freq == 'Train Time Interval':
-    filtered_df
     st.sidebar.markdown(f"""The *{time_freq}* schedule has 6 categories:""")
     st.sidebar.markdown("""
                 - *Late Night*: Midnight to 6 am, all days
@@ -70,5 +139,6 @@ elif time_freq == 'Train Time Interval':
                 - *Midday*: Weekdays from 9:30 am to 3:30 pm
                 - *Rush Hour PM*: Weekdays from 3:30 pm to 8 pm
                 - *Evenings*: Weekdays from 8 pm to midnight""")
+elif time_freq == 'Overall':
+    st.sidebar.markdown(f"""The *{time_freq}* data is for **all** hours, including late night""")
 
-## notes added depending on time_freq
