@@ -2,9 +2,8 @@
 ## Imports
 import pandas as pd 
 import numpy as np
-import seaborn as sns 
 import streamlit as st
-st.write(st.__version__)
+# st.write(st.__version__)
 # from streamlit_dynamic_filters import DynamicFilters
 from functions import *
 
@@ -57,7 +56,9 @@ if tab_selector == "Home":
                 hour_filter = st.multiselect('Select which hour(s):'
                                                 , hour_filter_options)
                 filtered_df = filter_streamit_data(filtered_df, hour_filter=hour_filter)
-        filtered_df
+    # bottom section
+    st.divider()
+    filtered_df
     
 elif tab_selector=="Service Comparisons":
     # compare two services
@@ -111,13 +112,18 @@ elif tab_selector=="Service Comparisons":
     # determine the difference in frequency
     service_level_1, service_level_2, service_difference = find_difference_in_service_levels(filtered_df_service_one, filtered_df_service_two)
     service_difference_str = print_difference_in_service_levels(service_difference)
+    st.divider()
     st.markdown(f"The **{service_1_selection}** is {service_difference_str} than the **{service_2_selection}** for the time period your selected")
         
     # displaying the differences
-
-        
-    # Display as text "service <x> has <y%> better service than service <z> for the selected time periods"
-    # show graph below 
+    service_1_2_df = pd.concat([filtered_df_service_one, filtered_df_service_two]).reset_index()
+    st.bar_chart(data=service_1_2_df
+                , x='Service'
+                , y="Trains per Hour (Each Direction)"
+                , width=500
+                , use_container_width=False
+                , color=['#f63366']
+                )
 
 elif tab_selector == 'Fun Facts About the System':
     st.caption("""Use this app to find the frequency for any subway service or station
@@ -130,6 +136,8 @@ elif tab_selector == 'Fun Facts About the System':
 if time_freq in ['Daily', 'Hourly']:
     st.sidebar.write(f"""The *{time_freq}* schedule has 3 categeories:
                     Weekday, Saturdays, and Sundays.""")
+    if tab_selector=="Service Comparisons":
+        st.sidebar.write(f"""Note: the **B** service does not appear because it does not run on all days.""")
 elif time_freq == 'Train Time Interval':
     st.sidebar.markdown(f"""The *{time_freq}* schedule has 6 categories:""")
     st.sidebar.markdown("""

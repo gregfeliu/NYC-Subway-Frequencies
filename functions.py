@@ -123,8 +123,8 @@ def filter_streamit_data(dataframe:pd.DataFrame
     return dataframe
 
 def find_difference_in_service_levels(filtered_df_1:pd.DataFrame, filtered_df_2:pd.DataFrame):
-    service_1_tph = filtered_df_1['Trains per Hour (Each Direction)'].sum()
-    service_2_tph = filtered_df_2['Trains per Hour (Each Direction)'].sum()
+    service_1_tph = filtered_df_1['Trains per Hour (Each Direction)'].mean()
+    service_2_tph = filtered_df_2['Trains per Hour (Each Direction)'].mean()
     service_difference = round(100 * (1 - (service_2_tph / service_1_tph)))
     return service_1_tph, service_2_tph, service_difference
 
@@ -135,4 +135,4 @@ def print_difference_in_service_levels(service_difference:float):
         final_str = f"{abs(service_difference)}% less frequent"
     elif service_difference == 0:
         final_str = "is equally as frequent"
-    return service_difference, final_str
+    return final_str
