@@ -1,4 +1,4 @@
-Route,Time Interval,Trains per Hour (Each Direction),Average Wait Time (Minutes)
+Service,Time Interval,Trains per Hour (Each Direction),Average Wait Time (Minutes)
 1,Evening,8,8.0
 1,Late Night,3,20.0
 1,Midday,10,6.0

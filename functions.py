@@ -1,7 +1,6 @@
 import pandas as pd
 pd.options.display.float_format = '{:,.0f}'.format
 import datetime
-import time
 import calendar 
 from io import StringIO
 import streamlit as st
@@ -101,7 +100,7 @@ def choose_streamlit_time_freq_data(time_freq:str):
         daily_df = load_original_data('daily_route_trip_freq')
         daily_df.reset_index(inplace=True)
         upsampled_daily_df = upsample_weekday_values(daily_df, day_of_week_column='Day of Week')
-        returned_df = upsampled_daily_df.groupby('Route').mean()
+        returned_df = upsampled_daily_df.groupby('Service').mean()
         returned_df = returned_df.drop(columns=['Day of Week'])
         returned_df = returned_df.round()
         returned_df = returned_df.astype({"Trains per Hour (Each Direction)": 'int'
