@@ -32,7 +32,7 @@ if tab_selector == "Home":
     with left_column:
         time_freq = st.selectbox(
             "Time Frequency",
-            ("Hourly", "Daily", "Train Time Interval"))
+            ("Train Time Interval", "Daily", "Hourly"))
         filtered_df = choose_streamlit_time_freq_data(time_freq)
     # user filters the data 
     with right_column:
@@ -67,7 +67,7 @@ elif tab_selector=="Service Comparisons":
         # one time freq 
         time_freq = st.selectbox(
             "Time Frequency",
-            ("Hourly", "Daily", "Train Time Interval", "Overall"))
+            ("Overall", "Train Time Interval", "Daily", "Hourly"))
         filtered_df = choose_streamlit_time_freq_data(time_freq)
         # filters
         level_of_detail_filter_options = filtered_df.index.drop_duplicates()
