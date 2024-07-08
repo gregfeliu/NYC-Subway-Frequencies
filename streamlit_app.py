@@ -147,6 +147,6 @@ elif time_freq == 'Train Time Interval':
                 - *Midday*: Weekdays from 9:30 am to 3:30 pm
                 - *Rush Hour PM*: Weekdays from 3:30 pm to 8 pm
                 - *Evenings*: Weekdays from 8 pm to midnight""")
-elif time_freq == 'Overall':
+elif time_freq == 'Overall': 
     st.sidebar.markdown(f"""The *{time_freq}* data is for **all** hours, including late night""")
 
