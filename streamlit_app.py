@@ -122,7 +122,7 @@ elif tab_selector=="Service Comparisons":
                 , y="Trains per Hour (Each Direction)"
                 , width=500
                 , use_container_width=False
-                , color=['#f63366']
+                , color=['#EE352E']
                 )
 
 elif tab_selector == 'Fun Facts About the System':
