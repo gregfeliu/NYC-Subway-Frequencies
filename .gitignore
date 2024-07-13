@@ -1,0 +1,29 @@
+# Created by https://www.toptal.com/developers/gitignore/api/vs,python
+# Edit at https://www.toptal.com/developers/gitignore?templates=vs,python
+
+### Python ###
+# Byte-compiled / optimized / DLL files
+__pycache__/
+
+# PyInstaller
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Other
+.DS_Store
+.devcontainer
+
+# End of https://www.toptal.com/developers/gitignore/api/vs,python
