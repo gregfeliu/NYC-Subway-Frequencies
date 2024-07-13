@@ -1,0 +1,138 @@
+Service,Time Interval,Trains per Hour (Each Direction),Average Wait Time (Minutes)
+1,Evening,8.0,7.0
+1,Late Night,4.0,16.0
+1,Midday,11.0,6.0
+1,Rush Hour AM,14.0,4.0
+1,Rush Hour PM,14.0,4.0
+1,Weekend,8.0,7.0
+2,Evening,5.0,11.0
+2,Late Night,4.0,16.0
+2,Midday,7.0,8.0
+2,Rush Hour AM,10.0,6.0
+2,Rush Hour PM,9.0,7.0
+2,Weekend,6.0,10.0
+3,Evening,4.0,13.0
+3,Late Night,4.0,17.0
+3,Midday,8.0,8.0
+3,Rush Hour AM,9.0,6.0
+3,Rush Hour PM,8.0,8.0
+3,Weekend,5.0,11.0
+4,Evening,6.0,10.0
+4,Late Night,4.0,15.0
+4,Midday,8.0,8.0
+4,Rush Hour AM,12.0,5.0
+4,Rush Hour PM,11.0,6.0
+4,Weekend,6.0,10.0
+5,Evening,4.0,13.0
+5,Late Night,4.0,16.0
+5,Midday,8.0,7.0
+5,Rush Hour AM,11.0,6.0
+5,Rush Hour PM,8.0,8.0
+5,Weekend,6.0,11.0
+6,Evening,8.0,8.0
+6,Late Night,4.0,16.0
+6,Midday,15.0,4.0
+6,Rush Hour AM,17.0,4.0
+6,Rush Hour PM,16.0,4.0
+6,Weekend,8.0,7.0
+7,Evening,12.0,5.0
+7,Late Night,4.0,14.0
+7,Midday,12.0,5.0
+7,Rush Hour AM,24.0,2.0
+7,Rush Hour PM,20.0,3.0
+7,Weekend,10.0,6.0
+A,Evening,6.0,10.0
+A,Late Night,6.0,10.0
+A,Midday,7.0,8.0
+A,Rush Hour AM,10.0,6.0
+A,Rush Hour PM,12.0,5.0
+A,Weekend,6.0,10.0
+B,Evening,2.0,30.0
+B,Late Night,0.0,167.0
+B,Midday,8.0,8.0
+B,Rush Hour AM,6.0,10.0
+B,Rush Hour PM,7.0,9.0
+C,Evening,3.0,18.0
+C,Late Night,0.0,130.0
+C,Midday,7.0,8.0
+C,Rush Hour AM,6.0,10.0
+C,Rush Hour PM,7.0,9.0
+C,Weekend,4.0,14.0
+D,Evening,6.0,10.0
+D,Late Night,3.0,18.0
+D,Midday,8.0,8.0
+D,Rush Hour AM,8.0,8.0
+D,Rush Hour PM,7.0,8.0
+D,Weekend,5.0,12.0
+E,Evening,7.0,9.0
+E,Late Night,3.0,18.0
+E,Midday,10.0,6.0
+E,Rush Hour AM,13.0,5.0
+E,Rush Hour PM,12.0,5.0
+E,Weekend,5.0,12.0
+F,Evening,6.0,9.0
+F,Late Night,3.0,18.0
+F,Midday,9.0,7.0
+F,Rush Hour AM,13.0,5.0
+F,Rush Hour PM,12.0,5.0
+F,Weekend,5.0,12.0
+FS,Evening,4.0,14.0
+FS,Late Night,3.0,20.0
+FS,Midday,6.0,10.0
+FS,Rush Hour AM,6.0,10.0
+FS,Rush Hour PM,6.0,10.0
+FS,Weekend,5.0,12.0
+G,Evening,11.0,5.0
+G,Late Night,6.0,9.0
+G,Midday,13.0,4.0
+G,Rush Hour AM,15.0,4.0
+G,Rush Hour PM,14.0,4.0
+G,Weekend,12.0,5.0
+GS,Evening,12.0,5.0
+GS,Late Night,1.0,73.0
+GS,Midday,13.0,5.0
+GS,Rush Hour AM,16.0,4.0
+GS,Rush Hour PM,16.0,4.0
+GS,Weekend,10.0,6.0
+H,Evening,4.0,17.0
+H,Late Night,3.0,20.0
+H,Midday,4.0,15.0
+H,Rush Hour AM,3.0,20.0
+H,Rush Hour PM,4.0,15.0
+H,Weekend,3.0,18.0
+J,Evening,5.0,13.0
+J,Late Night,3.0,18.0
+J,Midday,8.0,8.0
+J,Rush Hour AM,9.0,7.0
+J,Rush Hour PM,8.0,8.0
+J,Weekend,6.0,10.0
+L,Evening,12.0,5.0
+L,Late Night,4.0,15.0
+L,Midday,14.0,4.0
+L,Rush Hour AM,15.0,4.0
+L,Rush Hour PM,15.0,4.0
+L,Weekend,12.0,5.0
+M,Evening,4.0,14.0
+M,Late Night,4.0,17.0
+M,Midday,8.0,8.0
+M,Rush Hour AM,8.0,8.0
+M,Rush Hour PM,7.0,8.0
+M,Weekend,6.0,10.0
+N,Evening,7.0,9.0
+N,Late Night,3.0,18.0
+N,Midday,13.0,4.0
+N,Rush Hour AM,14.0,4.0
+N,Rush Hour PM,14.0,4.0
+N,Weekend,5.0,12.0
+Q,Evening,7.0,9.0
+Q,Late Night,3.0,19.0
+Q,Midday,8.0,8.0
+Q,Rush Hour AM,8.0,7.0
+Q,Rush Hour PM,9.0,7.0
+Q,Weekend,7.0,9.0
+R,Evening,4.0,14.0
+R,Late Night,4.0,15.0
+R,Midday,8.0,8.0
+R,Rush Hour AM,8.0,7.0
+R,Rush Hour PM,8.0,8.0
+R,Weekend,5.0,12.0
