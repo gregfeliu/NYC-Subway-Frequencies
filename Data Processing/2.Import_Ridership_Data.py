@@ -4,13 +4,19 @@
 import pandas as pd 
 import requests
 import os
+import sys
+# getting functions from the parent directory
+library_path = os.path.abspath(os.path.join(os.getcwd(), os.pardir))
+if library_path not in sys.path:
+    sys.path.append(library_path)
 from functions import *
+
 
 # Only making an api call if we don't already have the hourly station ridership data 
 try:
     hourly_station_ridership = pd.read_csv("saved_data/hourly_station_ridership.csv", index_col=0)
 except Exception as e:
-    copied_url = "https://data.ny.gov/resource/wujg-7c2s.json?$limit=1000000&$where=transit_timestamp >= '2024-2-26T00:00:00' AND transit_timestamp <= '2024-03-03T23:59:59' AND transit_mode = 'subway'&$order=transit_timestamp ASC&$group=transit_timestamp, station_complex_id&$select=transit_timestamp, station_complex_id, sum(ridership) as sum_ridership"
+    copied_url = "https://data.ny.gov/resource/wujg-7c2s.json?$limit=1000000&$where=transit_timestamp >= '2024-06-24T00:00:00' AND transit_timestamp <= '2024-06-30T23:59:59' AND transit_mode = 'subway'&$order=transit_timestamp ASC&$group=transit_timestamp, station_complex_id&$select=transit_timestamp, station_complex_id, sum(ridership) as sum_ridership"
     response = requests.get(copied_url)
     response_data = response.json()
     hourly_station_ridership = pd.DataFrame(response_data)

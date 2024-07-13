@@ -22,6 +22,10 @@ ENV/
 env.bak/
 venv.bak/
 
+# Data Directory
+saved_data/
+data/google_transit
+
 # Other
 .DS_Store
 .devcontainer

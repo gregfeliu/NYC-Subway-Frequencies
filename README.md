@@ -3,7 +3,7 @@
 ## Introduction
 New Yorkers can have strong opinions about the NYC Subway services. "The 4 is so much better than the 6. It's not even close". "Ugh, I hate riding the F train. It takes forever". Someone was so frustrated with the G train that they wrote a (dare I say, relatable) [song](https://youtu.be/_OhUIVsUkxg?si=fQvYZA07SlQRk1pk) about it.  
 
-So why *do* New Yorkers have such strong opinions about certain services? Are there actual, tangible differences between them? In this project **I examine some verifiable differences between the 28 services in the NYC subway system**. In particular, I focus on the frequencies that these trains have at different points in the schedule. The daily, hourly and time interval frequencies are all examined using the [GTFS schedule data](https://new.mta.info/developers). In addition, I touch on the capacity of each service, station-specific information and other fun trivia I discovered along the way. 
+So why *do* New Yorkers have such strong opinions about certain services? Are there actual, tangible differences between them? In this project **I examine the verifiable frequency differences between the 28 services in the NYC subway system**. In particular, I focus on the frequencies that these trains have at different points in the schedule. The daily, hourly and time interval frequencies are all examined using the [GTFS schedule data](https://new.mta.info/developers). In addition, I touch on the capacity of each service, station-specific information and other fun trivia I discovered along the way. 
 
 ## Train Frequencies
 

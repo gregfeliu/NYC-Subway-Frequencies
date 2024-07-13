@@ -23,9 +23,9 @@ trip_interval_route_freq = load_original_data('trip_interval_route_freq')
 
 # tab selection 
 tab_selector = st.sidebar.radio("How would you like to view the data?",
-            ("Home", "Service Comparisons", "Fun Facts About the System"))
+            ("Service Frequencies", "Service Comparisons"))
 # st.sidebar.write(f"You selected *{tab_selector}*")
-if tab_selector == "Home":
+if tab_selector == "Service Frequencies":
     # MAIN SECTION
     # user picks the time granularity
     left_column, right_column,  = st.columns(2)
@@ -92,7 +92,7 @@ elif tab_selector=="Service Comparisons":
                 filtered_df = filter_streamit_data(filtered_df, hour_filter=hour_filter)
     with right_column:
         service_1_selection_options = filtered_df.index.drop_duplicates()
-        service_1_selection = st.selectbox('Select which service(s):'
+        service_1_selection = st.selectbox('Select which service:'
                                                     , service_1_selection_options
                                                     , placeholder="Please select a service to use in the comparison")
         if service_1_selection:
@@ -101,7 +101,7 @@ elif tab_selector=="Service Comparisons":
         service_2_selection_options = filtered_df.index.drop_duplicates()
         if service_1_selection:
             service_2_selection_options = service_2_selection_options.drop(service_1_selection)
-        service_2_selection = st.selectbox('Select which service(s):'
+        service_2_selection = st.selectbox('Select which service:'
                                                     , service_2_selection_options
                                                     , placeholder="Please select a service to use in the comparison")
         if service_2_selection:
@@ -113,7 +113,8 @@ elif tab_selector=="Service Comparisons":
     service_level_1, service_level_2, service_difference = find_difference_in_service_levels(filtered_df_service_one, filtered_df_service_two)
     service_difference_str = print_difference_in_service_levels(service_difference)
     st.divider()
-    st.markdown(f"The **{service_1_selection}** is {service_difference_str} than the **{service_2_selection}** for the time period your selected")
+    st.markdown(f"""The **{service_1_selection}** is {service_difference_str} than the **{service_2_selection}** for the time period your selected""")
+    st.text(" \n") ## adds a new line
         
     # displaying the differences
     service_1_2_df = pd.concat([filtered_df_service_one, filtered_df_service_two]).reset_index()
@@ -125,12 +126,12 @@ elif tab_selector=="Service Comparisons":
                 , color=['#EE352E']
                 )
 
-elif tab_selector == 'Fun Facts About the System':
-    st.caption("""Use this app to find the frequency for any subway service or station
-            in the system. Without looking at any schedules, you will
-            be able to have an idea of how long a train will take to arrive
-            at your station or for the service as a whole
-            **To start, please select how you would like to view the data in the sidebar**""")
+# elif tab_selector == 'Fun Facts About the System':
+#     st.caption("""Use this app to find the frequency for any subway service or station
+#             in the system. Without looking at any schedules, you will
+#             be able to have an idea of how long a train will take to arrive
+#             at your station or for the service as a whole
+#             **To start, please select how you would like to view the data in the sidebar**""")
 
 # Helpful information about the data in the sidebar and displaying the data
 if time_freq in ['Daily', 'Hourly']:
