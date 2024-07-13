@@ -1,138 +1,144 @@
-Service,Time Interval,Trains per Hour (Each Direction),Average Wait Time (Minutes)
-1,Evening,8,8.0
-1,Late Night,3,20.0
-1,Midday,10,6.0
-1,Rush Hour AM,14,4.0
-1,Rush Hour PM,14,4.0
-1,Weekend,8,8.0
-2,Evening,5,12.0
-2,Late Night,3,20.0
-2,Midday,7,9.0
-2,Rush Hour AM,10,6.0
-2,Rush Hour PM,8,8.0
-2,Weekend,6,10.0
-3,Evening,4,15.0
-3,Late Night,3,20.0
-3,Midday,7,9.0
-3,Rush Hour AM,9,7.0
-3,Rush Hour PM,8,8.0
-3,Weekend,4,15.0
-4,Evening,5,12.0
-4,Late Night,3,20.0
-4,Midday,8,8.0
-4,Rush Hour AM,11,6.0
-4,Rush Hour PM,10,6.0
-4,Weekend,6,10.0
-5,Evening,4,15.0
-5,Late Night,3,20.0
-5,Midday,8,8.0
-5,Rush Hour AM,11,6.0
-5,Rush Hour PM,7,9.0
-5,Weekend,4,15.0
-6,Evening,7,9.0
-6,Late Night,3,20.0
-6,Midday,15,4.0
-6,Rush Hour AM,17,4.0
-6,Rush Hour PM,15,4.0
-6,Weekend,8,8.0
-7,Evening,12,5.0
-7,Late Night,4,15.0
-7,Midday,12,5.0
-7,Rush Hour AM,24,2.0
-7,Rush Hour PM,20,3.0
-7,Weekend,10,6.0
-A,Evening,6,10.0
-A,Late Night,6,10.0
-A,Midday,7,9.0
-A,Rush Hour AM,9,7.0
-A,Rush Hour PM,11,6.0
-A,Weekend,5,12.0
-B,Evening,2,30.0
-B,Late Night,0,inf
-B,Midday,6,10.0
-B,Rush Hour AM,5,12.0
-B,Rush Hour PM,7,9.0
-C,Evening,3,20.0
-C,Late Night,0,inf
-C,Midday,7,9.0
-C,Rush Hour AM,6,10.0
-C,Rush Hour PM,6,10.0
-C,Weekend,4,15.0
-D,Evening,5,12.0
-D,Late Night,3,20.0
-D,Midday,6,10.0
-D,Rush Hour AM,7,9.0
-D,Rush Hour PM,7,9.0
-D,Weekend,4,15.0
-E,Evening,6,10.0
-E,Late Night,3,20.0
-E,Midday,9,7.0
-E,Rush Hour AM,12,5.0
-E,Rush Hour PM,12,5.0
-E,Weekend,4,15.0
-F,Evening,9,7.0
-F,Late Night,4,15.0
-F,Midday,12,5.0
-F,Rush Hour AM,15,4.0
-F,Rush Hour PM,14,4.0
-F,Weekend,7,9.0
-FS,Evening,4,15.0
-FS,Late Night,3,20.0
-FS,Midday,6,10.0
-FS,Rush Hour AM,6,10.0
-FS,Rush Hour PM,6,10.0
-FS,Weekend,4,15.0
-G,Evening,6,10.0
-G,Late Night,3,20.0
-G,Midday,7,9.0
-G,Rush Hour AM,7,9.0
-G,Rush Hour PM,7,9.0
-G,Weekend,6,10.0
-GS,Evening,12,5.0
-GS,Late Night,0,inf
-GS,Midday,12,5.0
-GS,Rush Hour AM,16,4.0
-GS,Rush Hour PM,15,4.0
-GS,Weekend,9,7.0
-H,Evening,3,20.0
-H,Late Night,3,20.0
-H,Midday,4,15.0
-H,Rush Hour AM,3,20.0
-H,Rush Hour PM,4,15.0
-H,Weekend,3,20.0
-J,Evening,4,15.0
-J,Late Night,3,20.0
-J,Midday,6,10.0
-J,Rush Hour AM,9,7.0
-J,Rush Hour PM,7,9.0
-J,Weekend,5,12.0
-L,Evening,12,5.0
-L,Late Night,3,20.0
-L,Midday,13,5.0
-L,Rush Hour AM,15,4.0
-L,Rush Hour PM,15,4.0
-L,Weekend,12,5.0
-M,Evening,5,12.0
-M,Late Night,3,20.0
-M,Midday,6,10.0
-M,Rush Hour AM,6,10.0
-M,Rush Hour PM,6,10.0
-M,Weekend,6,10.0
-N,Evening,7,9.0
-N,Late Night,3,20.0
-N,Midday,13,5.0
-N,Rush Hour AM,14,4.0
-N,Rush Hour PM,14,4.0
-N,Weekend,4,15.0
-Q,Evening,6,10.0
-Q,Late Night,3,20.0
-Q,Midday,7,9.0
-Q,Rush Hour AM,8,8.0
-Q,Rush Hour PM,8,8.0
-Q,Weekend,6,10.0
-R,Evening,4,15.0
-R,Late Night,3,20.0
-R,Midday,7,9.0
-R,Rush Hour AM,9,7.0
-R,Rush Hour PM,8,8.0
-R,Weekend,4,15.0
+,route_id,train_time_interval,trains_per_hour,headway_seconds,headway_minutes,route_time_seconds,route_time_minutes,Avg_num_trains_running
+0,1,Evening,8.2,436.0,7.3,3408,56.8,15.6
+1,1,Late Night,3.6,989.0,16.5,3408,56.8,6.9
+2,1,Midday,10.7,338.0,5.6,3408,56.8,20.2
+3,1,Rush Hour AM,14.3,251.0,4.2,3408,56.8,27.1
+4,1,Rush Hour PM,14.2,253.0,4.2,3408,56.8,26.9
+5,1,Weekend,8.5,426.0,7.1,3408,56.8,16.0
+6,2,Evening,5.2,686.0,11.4,5744,95.7,16.7
+7,2,Late Night,3.6,989.0,16.5,5744,95.7,11.6
+8,2,Midday,7.3,491.0,8.2,5744,95.7,23.4
+9,2,Rush Hour AM,10.0,360.0,6.0,5744,95.7,31.9
+10,2,Rush Hour PM,8.9,405.0,6.8,5744,95.7,28.4
+11,2,Weekend,6.2,578.0,9.6,5744,95.7,19.9
+12,3,Evening,4.5,800.0,13.3,3486,58.1,8.7
+13,3,Late Night,3.5,1032.0,17.2,3486,58.1,6.8
+14,3,Midday,7.5,480.0,8.0,3486,58.1,14.5
+15,3,Rush Hour AM,9.3,386.0,6.4,3486,58.1,18.1
+16,3,Rush Hour PM,8.0,450.0,7.5,3486,58.1,15.5
+17,3,Weekend,5.4,663.0,11.1,3486,58.1,10.5
+18,4,Evening,5.8,626.0,10.4,4141,69.0,13.2
+19,4,Late Night,3.9,924.0,15.4,4141,69.0,9.0
+20,4,Midday,8.0,450.0,7.5,4141,69.0,18.4
+21,4,Rush Hour AM,11.7,309.0,5.1,4141,69.0,26.8
+22,4,Rush Hour PM,10.7,338.0,5.6,4141,69.0,24.5
+23,4,Weekend,6.3,568.0,9.5,4141,69.0,14.6
+24,5,Evening,4.5,800.0,13.3,3292,54.9,8.2
+25,5,Late Night,3.6,989.0,16.5,3292,54.9,6.7
+26,5,Midday,8.5,424.0,7.1,3292,54.9,15.6
+27,5,Rush Hour AM,11.0,327.0,5.5,3292,54.9,20.1
+28,5,Rush Hour PM,7.8,463.0,7.7,3292,54.9,14.2
+29,5,Weekend,5.6,646.0,10.8,3292,54.9,10.2
+30,6,Evening,7.8,465.0,7.7,3445,57.4,14.8
+31,6,Late Night,3.8,936.0,15.6,3445,57.4,7.4
+32,6,Midday,15.3,235.0,3.9,3445,57.4,29.3
+33,6,Rush Hour AM,17.3,208.0,3.5,3445,57.4,33.2
+34,6,Rush Hour PM,15.8,228.0,3.8,3445,57.4,30.2
+35,6,Weekend,8.1,444.0,7.4,3445,57.4,15.5
+36,7,Evening,12.2,294.0,4.9,2245,37.4,15.3
+37,7,Late Night,4.4,826.0,13.8,2245,37.4,5.4
+38,7,Midday,12.3,292.0,4.9,2245,37.4,15.4
+39,7,Rush Hour AM,24.0,150.0,2.5,2245,37.4,29.9
+40,7,Rush Hour PM,20.0,180.0,3.0,2245,37.4,24.9
+41,7,Weekend,10.2,353.0,5.9,2245,37.4,12.7
+42,A,Evening,6.0,600.0,10.0,4850,80.8,16.2
+43,A,Late Night,6.0,600.0,10.0,4850,80.8,16.2
+44,A,Midday,7.3,491.0,8.2,4850,80.8,19.8
+45,A,Rush Hour AM,9.7,372.0,6.2,4850,80.8,26.0
+46,A,Rush Hour PM,11.6,312.0,5.2,4850,80.8,31.1
+47,A,Weekend,5.9,612.0,10.2,4850,80.8,15.9
+48,B,Evening,2.0,1800.0,30.0,4578,76.3,5.1
+49,B,Late Night,0.4,10029.0,167.1,4578,76.3,0.9
+50,B,Midday,7.5,480.0,8.0,4578,76.3,19.1
+51,B,Rush Hour AM,6.0,600.0,10.0,4578,76.3,15.3
+52,B,Rush Hour PM,6.9,523.0,8.7,4578,76.3,17.5
+53,C,Evening,3.2,1108.0,18.5,4079,68.0,7.4
+54,C,Late Night,0.5,7800.0,130.0,4079,68.0,1.0
+55,C,Midday,7.2,502.0,8.4,4079,68.0,16.2
+56,C,Rush Hour AM,6.3,568.0,9.5,4079,68.0,14.4
+57,C,Rush Hour PM,6.7,540.0,9.0,4079,68.0,15.1
+58,C,Weekend,4.4,824.0,13.7,4079,68.0,9.9
+59,D,Evening,5.8,626.0,10.4,5638,94.0,18.0
+60,D,Late Night,3.3,1097.0,18.3,5638,94.0,10.3
+61,D,Midday,7.8,460.0,7.7,5638,94.0,24.5
+62,D,Rush Hour AM,7.7,470.0,7.8,5638,94.0,24.0
+63,D,Rush Hour PM,7.3,491.0,8.2,5638,94.0,23.0
+64,D,Weekend,5.0,724.0,12.1,5638,94.0,15.6
+65,E,Evening,6.8,533.0,8.9,3163,52.7,11.9
+66,E,Late Night,3.3,1080.0,18.0,3163,52.7,5.9
+67,E,Midday,9.7,372.0,6.2,3163,52.7,17.0
+68,E,Rush Hour AM,13.0,277.0,4.6,3163,52.7,22.8
+69,E,Rush Hour PM,12.4,289.0,4.8,3163,52.7,21.9
+70,E,Weekend,4.9,741.0,12.4,3163,52.7,8.5
+71,F,Evening,6.5,554.0,9.2,5841,97.3,21.1
+72,F,Late Night,3.4,1048.0,17.5,5841,97.3,11.1
+73,F,Midday,8.8,408.0,6.8,5841,97.3,28.6
+74,F,Rush Hour AM,13.0,277.0,4.6,5841,97.3,42.2
+75,F,Rush Hour PM,11.6,312.0,5.2,5841,97.3,37.5
+76,F,Weekend,4.8,750.0,12.5,5841,97.3,15.6
+77,FS,Evening,4.2,847.0,14.1,405,6.8,1.0
+78,FS,Late Night,3.1,1170.0,19.5,405,6.8,0.7
+79,FS,Midday,6.0,600.0,10.0,405,6.8,1.4
+80,FS,Rush Hour AM,6.0,600.0,10.0,405,6.8,1.4
+81,FS,Rush Hour PM,6.0,600.0,10.0,405,6.8,1.4
+82,FS,Weekend,4.9,733.0,12.2,405,6.8,1.1
+83,G,Evening,11.2,320.0,5.3,1602,26.7,10.0
+84,G,Late Night,6.5,557.0,9.3,1602,26.7,5.8
+85,G,Midday,13.3,270.0,4.5,1602,26.7,11.9
+86,G,Rush Hour AM,15.0,240.0,4.0,1602,26.7,13.4
+87,G,Rush Hour PM,14.2,253.0,4.2,1602,26.7,12.7
+88,G,Weekend,11.6,311.0,5.2,1602,26.7,10.3
+89,GS,Evening,12.5,288.0,4.8,90,1.5,0.6
+90,GS,Late Night,0.8,4388.0,73.1,90,1.5,0.0
+91,GS,Midday,12.8,281.0,4.7,90,1.5,0.6
+92,GS,Rush Hour AM,16.0,225.0,3.8,90,1.5,0.8
+93,GS,Rush Hour PM,15.8,228.0,3.8,90,1.5,0.8
+94,GS,Weekend,9.5,378.0,6.3,90,1.5,0.5
+95,H,Evening,3.5,1029.0,17.1,602,10.0,1.2
+96,H,Late Night,3.1,1170.0,19.5,602,10.0,1.0
+97,H,Midday,4.0,900.0,15.0,602,10.0,1.3
+98,H,Rush Hour AM,3.0,1200.0,20.0,602,10.0,1.0
+99,H,Rush Hour PM,4.0,900.0,15.0,602,10.0,1.3
+100,H,Weekend,3.3,1096.0,18.3,602,10.0,1.1
+101,J,Evening,4.8,758.0,12.6,3205,53.4,8.5
+102,J,Late Night,3.3,1097.0,18.3,3205,53.4,5.8
+103,J,Midday,7.5,480.0,8.0,3205,53.4,13.4
+104,J,Rush Hour AM,9.0,400.0,6.7,3205,53.4,16.0
+105,J,Rush Hour PM,7.8,463.0,7.7,3205,53.4,13.8
+106,J,Weekend,5.8,618.0,10.3,3205,53.4,10.4
+107,L,Evening,12.2,294.0,4.9,2235,37.2,15.2
+108,L,Late Night,3.9,924.0,15.4,2235,37.2,4.8
+109,L,Midday,13.7,263.0,4.4,2235,37.2,16.9
+110,L,Rush Hour AM,15.3,235.0,3.9,2235,37.2,19.0
+111,L,Rush Hour PM,15.1,238.0,4.0,2235,37.2,18.7
+112,L,Weekend,12.1,297.0,5.0,2235,37.2,15.0
+113,M,Evening,4.2,847.0,14.1,2247,37.5,5.3
+114,M,Late Night,3.5,1017.0,17.0,2247,37.5,4.4
+115,M,Midday,7.5,480.0,8.0,2247,37.5,9.4
+116,M,Rush Hour AM,7.7,470.0,7.8,2247,37.5,9.6
+117,M,Rush Hour PM,7.3,491.0,8.2,2247,37.5,9.2
+118,M,Weekend,6.0,597.0,10.0,2247,37.5,7.5
+119,N,Evening,7.0,514.0,8.6,4186,69.8,16.3
+120,N,Late Night,3.3,1080.0,18.0,4186,69.8,7.8
+121,N,Midday,13.3,270.0,4.5,4186,69.8,31.0
+122,N,Rush Hour AM,14.0,257.0,4.3,4186,69.8,32.6
+123,N,Rush Hour PM,14.0,257.0,4.3,4186,69.8,32.6
+124,N,Weekend,5.0,724.0,12.1,4186,69.8,11.6
+125,Q,Evening,6.8,533.0,8.9,3848,64.1,14.4
+126,Q,Late Night,3.2,1114.0,18.6,3848,64.1,6.9
+127,Q,Midday,7.5,480.0,8.0,3848,64.1,16.0
+128,Q,Rush Hour AM,8.3,432.0,7.2,3848,64.1,17.8
+129,Q,Rush Hour PM,8.7,415.0,6.9,3848,64.1,18.5
+130,Q,Weekend,6.6,545.0,9.1,3848,64.1,14.1
+131,R,Evening,4.2,847.0,14.1,4732,78.9,11.2
+132,R,Late Night,3.9,912.0,15.2,4732,78.9,10.4
+133,R,Midday,7.5,480.0,8.0,4732,78.9,19.7
+134,R,Rush Hour AM,8.3,432.0,7.2,4732,78.9,21.9
+135,R,Rush Hour PM,8.0,450.0,7.5,4732,78.9,21.0
+136,R,Weekend,4.8,750.0,12.5,4732,78.9,12.6
+137,SI,Evening,2.0,1800.0,30.0,2418,40.3,2.7
+138,SI,Late Night,2.0,1800.0,30.0,2418,40.3,2.7
+139,SI,Midday,2.2,1662.0,27.7,2418,40.3,2.9
+140,SI,Rush Hour AM,5.0,720.0,12.0,2418,40.3,6.7
+141,SI,Rush Hour PM,6.4,559.0,9.3,2418,40.3,8.7
+142,SI,Weekend,2.0,1800.0,30.0,2418,40.3,2.7
