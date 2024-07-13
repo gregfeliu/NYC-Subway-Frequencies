@@ -58,6 +58,6 @@ trip_interval_route_freq = trip_interval_route_freq.round()
 if not os.path.exists('data'):
     os.makedirs('data')
 
-hourly_route_trip_freq.to_csv("data/hourly_route_trip_freq.csv")
-daily_route_trip_freq.to_csv("data/daily_route_trip_freq.csv")
-trip_interval_route_freq.to_csv("data/trip_interval_route_freq.csv")
+hourly_route_trip_freq.to_csv("../data/hourly_route_trip_freq.csv")
+daily_route_trip_freq.to_csv("../data/daily_route_trip_freq.csv")
+trip_interval_route_freq.to_csv("../data/trip_interval_route_freq.csv")
