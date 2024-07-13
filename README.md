@@ -24,7 +24,7 @@ Speaking of service by time period, It may be easier to divide the train schedul
 This puts it even more into perspective how the wait time will differ depending on when you access the train. On average, people will wait 3 times as long for a train late night as compared to during either rush hour!
 
 ### Service Level Comparison
-All subway services are most frequent during rush hours (6:30 - 9:30 a.m. and 3:30 - 8 p.m.). Using these time periods, I will show the amount of time between each scheduled train for each service so that we can compare the services: 
+All subway services are most frequent during rush hours (6:30 - 9:30 a.m. and 3:30 - 8 p.m.). Using these time periods, I will show the amount of time between each scheduled train for each service so that we can compare the services (G train removed due to large scale service changes): 
 
 ![](images/service_comparison_rush_hour.png)
 
