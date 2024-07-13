@@ -7,16 +7,19 @@
 
 ## Imports
 import pandas as pd 
-import datetime
-import time
 import numpy as np
+import sys
 import os
+# getting functions from the parent directory
+library_path = os.path.abspath(os.path.join(os.getcwd(), os.pardir))
+if library_path not in sys.path:
+    sys.path.append(library_path)
 from functions import *
 
 ### Data 
-stop_times_df = pd.read_csv("data/google_transit/stop_times.txt")
-stops_df = pd.read_csv("data/google_transit/stops.txt")
-trips_df = pd.read_csv("data/google_transit/trips.txt")
+stop_times_df = pd.read_csv("../data/google_transit/stop_times.txt")
+stops_df = pd.read_csv("../data/google_transit/stops.txt")
+trips_df = pd.read_csv("../data/google_transit/trips.txt")
 
 # Adjusting the data
 ### making the times within a 24 hour range -- originally is up to 27 
@@ -122,8 +125,8 @@ route_frequency_by_day = route_frequency_by_day.round(1)
 if not os.path.exists('saved_data'):
     os.makedirs('saved_data')
 
-first_stop_in_trip.to_csv("saved_data/first_stop_in_trip.csv")
-avg_trip_time_final.to_csv("saved_data/average_trip_time_per_service.csv")
-hourly_route_trip_freq.to_csv("saved_data/hourly_route_trip_freq.csv")
-trip_interval_route_freq.to_csv("saved_data/trip_interval_route_freq.csv")
-route_frequency_by_day.to_csv("saved_data/route_frequency_by_day.csv")
+first_stop_in_trip.to_csv("../saved_data/first_stop_in_trip.csv")
+avg_trip_time_final.to_csv("../saved_data/average_trip_time_per_service.csv")
+hourly_route_trip_freq.to_csv("../saved_data/hourly_route_trip_freq.csv")
+trip_interval_route_freq.to_csv("../saved_data/trip_interval_route_freq.csv")
+route_frequency_by_day.to_csv("../saved_data/route_frequency_by_day.csv")

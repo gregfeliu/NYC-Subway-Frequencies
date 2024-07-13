@@ -41,6 +41,11 @@ trip_interval_route_freq.columns = ['Service', 'Time Interval', 'Trains per Hour
 trip_interval_route_freq = trip_interval_route_freq.set_index("Service")
 trip_interval_route_freq = trip_interval_route_freq.round()
 
+## Removing data for the G for all time granularities (for the summer schedule)
+hourly_route_trip_freq = hourly_route_trip_freq[hourly_route_trip_freq['Service']!='G']
+daily_route_trip_freq = daily_route_trip_freq[daily_route_trip_freq['Service']!='G']
+trip_interval_route_freq = trip_interval_route_freq[trip_interval_route_freq['Service']!='G']
+
 # # Line, Complex, Station Data 
 # station_info_w_frequency = pd.read_csv("../data/station_info_w_frequency.csv", index_col=0)
 # station_info_w_frequency = station_info_w_frequency[station_info_w_frequency['Borough']!='SI']

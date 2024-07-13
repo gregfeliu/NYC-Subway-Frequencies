@@ -48,13 +48,18 @@ def scale_time_intervals_to_hour(df_grouped_at_interval_level: pd.DataFrame):
 
 def group_into_day_type(dataframe: pd.DataFrame, column_name:str):    
     day_of_week_list = []
+    mapping = {
+    # L0S1, L0S4, etc. are all weekday
+        'Weekday': ['Weekday', 'L0S1', 'L0S4', 'L0S7'],
+        'Saturday': ['Saturday', 'L0S2', 'L0S5', 'L0S8'],
+        'Sunday': ['Sunday', 'L0S3', 'L0S6', 'L0S9']
+        }
     for x in dataframe[column_name]:
-        if 'Weekday' in x or 'L0S1' in x:
-            day_of_week_list.append('Weekday')
-        elif 'Saturday' in x or 'L0S2' in x:
-            day_of_week_list.append('Saturday')
-        elif 'Sunday' in x or 'L0S3' in x:
-            day_of_week_list.append('Sunday')
+        for day, mapped_value_list in mapping.items():
+            for value in mapped_value_list:
+                if value in x:
+                    day_of_week_list.append(day)
+                    break
     dataframe['day_of_week'] = day_of_week_list
     return dataframe
 
