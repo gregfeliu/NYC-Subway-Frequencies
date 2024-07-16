@@ -11,15 +11,22 @@ import numpy as np
 import sys
 import os
 # getting functions from the parent directory
-library_path = os.path.abspath(os.path.join(os.getcwd(), os.pardir))
-if library_path not in sys.path:
-    sys.path.append(library_path)
+# library_path = os.path.abspath(os.path.join(os.getcwd(), os.pardir))
+# if library_path not in sys.path:
+#     sys.path.append(library_path)
+# from functions import *
+
+# Get the current file's directory
+current_dir = os.path.dirname(os.path.abspath(__file__))
+parent_dir = os.path.dirname(current_dir)
+# Add the parent directory to sys.path
+sys.path.append(parent_dir)
 from functions import *
 
 ### Data 
-stop_times_df = pd.read_csv("../data/google_transit/stop_times.txt")
-stops_df = pd.read_csv("../data/google_transit/stops.txt")
-trips_df = pd.read_csv("../data/google_transit/trips.txt")
+stop_times_df = pd.read_csv(f"{parent_dir}/data/google_transit/stop_times.txt")
+stops_df = pd.read_csv(f"{parent_dir}/data/google_transit/stops.txt")
+trips_df = pd.read_csv(f"{parent_dir}/data/google_transit/trips.txt")
 
 # Adjusting the data
 ### making the times within a 24 hour range -- originally is up to 27 
@@ -68,7 +75,7 @@ valid_trip_times = pd.DataFrame(trip_time_diff[trip_time_diff.values<pd.Timedelt
 valid_trip_times['route_id'] = [x.split("_")[-1].split('.')[0] 
                                         for x in valid_trip_times['trip_id']]
 # Average trip time for each service
-avg_trip_time = pd.DataFrame(valid_trip_times.groupby('route_id').mean(numeric_only=False)).reset_index()
+avg_trip_time = pd.DataFrame(valid_trip_times.groupby('route_id')['departure_time'].mean()).reset_index()
 avg_trip_time['route_time_seconds'] = [round(x.total_seconds()) for x in avg_trip_time['departure_time']]
 avg_trip_time['route_time_minutes'] = [round(x / 60, 1) for x in avg_trip_time['route_time_seconds']]
 # the amount of time it takes to reach one end of the route from the other
