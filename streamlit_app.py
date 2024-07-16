@@ -23,7 +23,7 @@ trip_interval_route_freq = load_original_data('trip_interval_route_freq')
 
 # tab selection 
 tab_selector = st.sidebar.radio("How would you like to view the data?",
-            ("Service Frequencies", "Service Comparisons"))
+            ("Service Frequencies", "Service Comparisons", "Appendix"))
 # st.sidebar.write(f"You selected *{tab_selector}*")
 if tab_selector == "Service Frequencies":
     # MAIN SECTION
@@ -133,7 +133,22 @@ elif tab_selector=="Service Comparisons":
 #             at your station or for the service as a whole
 #             **To start, please select how you would like to view the data in the sidebar**""")
 
-# Helpful information about the data in the sidebar and displaying the data
+    # Helpful information about the data in the sidebar and displaying the data
+elif tab_selector == 'Appendix':
+    time_freq = None
+    
+    st.caption("""Use this app to find the frequency for any subway service or station
+            in the system. Without looking at any transit service app, you will
+            be able to estimate how long a train will take to arrive
+            at your station or for the service as a whole. It also allows you to 
+            compare and evaluate different services.""")
+    st.divider()
+    st.caption("""This app uses the static MTA GTFS Schedule for Q3 2024. 
+            The schedule is valid for all planned trips taking into account long term service outages/reroutes. 
+            Because of this and the timing of the G train shutdown between late June and early September 
+            for large stretches of the line, **data for the G was left out of this version**.""")
+    st.caption("To learn more about the conclusions of this project, go to the project's [GitHub page](https://github.com/gregfeliu/NYC-Subway-Frequencies/tree/main?tab=readme-ov-file)")
+
 if time_freq in ['Daily', 'Hourly']:
     st.sidebar.write(f"""The *{time_freq}* schedule has 3 categeories:
                     Weekday, Saturdays, and Sundays.""")
