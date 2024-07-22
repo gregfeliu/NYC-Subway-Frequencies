@@ -141,12 +141,12 @@ elif tab_selector == 'Appendix':
             in the system. Without looking at any transit service app, you will
             be able to estimate how long a train will take to arrive
             at your station or for the service as a whole. It also allows you to 
-            compare and evaluate different services.""")
+            compare and evaluate different services for future trips.""")
     st.divider()
     st.markdown("""This app uses the [static MTA GTFS Schedule for Q3 2024](http://web.mta.info/developers/data/nyct/subway/google_transit.zip). 
             The schedule is valid for all planned trips taking into account long term service outages/reroutes. 
             Because of this and the timing of the G train shutdown between late June and early September 
-            for large stretches of the line, **data for the G was left out of this version**.""")
+            for large stretches of the line, **data for the G was removed from this version of the app**.""")
     st.caption("To learn more about the conclusions of this project, go to the project's [GitHub page](https://github.com/gregfeliu/NYC-Subway-Frequencies/tree/main?tab=readme-ov-file)")
 
 if time_freq in ['Daily', 'Hourly']:
