@@ -120,7 +120,7 @@ elif tab_selector=="Service Comparisons":
     service_1_2_df = pd.concat([filtered_df_service_one, filtered_df_service_two]).reset_index()
     st.bar_chart(data=service_1_2_df
                 , x='Service'
-                , y="Trains per Hour (Each Direction)"
+                , y="TPH"
                 , width=500
                 , use_container_width=False
                 , color=['#EE352E']
