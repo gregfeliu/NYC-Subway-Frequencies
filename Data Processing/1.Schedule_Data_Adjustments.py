@@ -129,8 +129,8 @@ route_frequency_by_day = route_frequency_by_day.round(1)
 
 
 # Saving all Data 
-if not os.path.exists('saved_data'):
-    os.makedirs('saved_data')
+if not os.path.exists('../saved_data'):
+    os.makedirs('../saved_data')
 
 first_stop_in_trip.to_csv("../saved_data/first_stop_in_trip.csv")
 avg_trip_time_final.to_csv("../saved_data/average_trip_time_per_service.csv")

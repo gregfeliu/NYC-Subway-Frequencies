@@ -107,8 +107,8 @@ def choose_streamlit_time_freq_data(time_freq:str):
         returned_df = upsampled_daily_df.groupby('Service').mean()
         returned_df = returned_df.drop(columns=['Day of Week'])
         returned_df = returned_df.round()
-        returned_df = returned_df.astype({"Trains per Hour (Each Direction)": 'int'
-                                            , "Average Wait Time (Minutes)": 'int'})
+        returned_df = returned_df.astype({"TPH": 'int'
+                                        , "Wait Time (Min.)": 'int'})
     return returned_df
 
 def filter_streamit_data(dataframe:pd.DataFrame
@@ -127,8 +127,8 @@ def filter_streamit_data(dataframe:pd.DataFrame
     return dataframe
 
 def find_difference_in_service_levels(filtered_df_1:pd.DataFrame, filtered_df_2:pd.DataFrame):
-    service_1_tph = filtered_df_1['Trains per Hour (Each Direction)'].mean()
-    service_2_tph = filtered_df_2['Trains per Hour (Each Direction)'].mean()
+    service_1_tph = filtered_df_1['TPH'].mean()
+    service_2_tph = filtered_df_2['TPH'].mean()
     service_difference = round(100 * (1 - (service_2_tph / service_1_tph)))
     return service_1_tph, service_2_tph, service_difference
 
@@ -140,3 +140,14 @@ def print_difference_in_service_levels(service_difference:float):
     elif service_difference == 0:
         final_str = "is equally as frequent"
     return final_str
+
+def streamlit_specific_adjustments(dataframe: pd.DataFrame):
+    # renaming some services
+    service_replacements_dict = {"H": "Rock. Shuttle"
+                                 , "FS": "Fulton Shuttle"
+                                 , "GS": "42nd St. Shuttle"}
+    dataframe['Service'] = dataframe['Service'].replace(service_replacements_dict)
+    # removing marginal services in time intervals 
+    # # (e.g.: B will count as late night when starting at 5:55 am)
+    dataframe = dataframe[dataframe['Avg. Wait Time (Min.)']<31]
+    return dataframe

@@ -17,7 +17,6 @@ sys.path.append(parent_dir)
 from functions import *
 
 
-
 # data 
 ### hourly
 hourly_route_trip_freq = pd.read_csv("../data/hourly_route_trip_freq.csv", index_col=0)
@@ -27,7 +26,7 @@ hourly_route_trip_freq = hourly_route_trip_freq.drop(columns=['route_time_second
                                                             , 'headway_seconds'
                                                             , 'route_time_minutes'])
 hourly_route_trip_freq = hourly_route_trip_freq.round()
-hourly_route_trip_freq.columns = ['Service', 'Day of Week', 'Hour', 'Trains per Hour (Each Direction)', 'Average Wait Time (Minutes)']
+hourly_route_trip_freq.columns = ['Service', 'Day of Week', 'Hour', 'TPH', 'Avg. Wait Time (Min.)']
 
 ### daily
 daily_route_trip_freq = hourly_route_trip_freq.drop(columns=['Hour'])
@@ -43,7 +42,7 @@ trip_interval_route_freq = trip_interval_route_freq.drop(columns=['route_time_se
                                                             , 'route_time_minutes'])
 # add custom time period ordering 
 trip_interval_route_freq = trip_interval_route_freq.round()
-trip_interval_route_freq.columns = ['Service', 'Time Interval', 'Trains per Hour (Each Direction)', 'Average Wait Time (Minutes)']
+trip_interval_route_freq.columns = ['Service', 'Time Interval', 'TPH', 'Avg. Wait Time (Min.)']
 
 trip_interval_route_freq = trip_interval_route_freq.round()
 
@@ -53,6 +52,10 @@ daily_route_trip_freq = daily_route_trip_freq[daily_route_trip_freq['Service']!=
 trip_interval_route_freq = trip_interval_route_freq[trip_interval_route_freq['Service']!='G']
 
 # Final Adjustments
+hourly_route_trip_freq = streamlit_specific_adjustments(hourly_route_trip_freq)
+daily_route_trip_freq = streamlit_specific_adjustments(daily_route_trip_freq)
+trip_interval_route_freq = streamlit_specific_adjustments(trip_interval_route_freq)
+
 hourly_route_trip_freq = hourly_route_trip_freq.set_index("Service")
 daily_route_trip_freq = daily_route_trip_freq.set_index("Service")
 trip_interval_route_freq = trip_interval_route_freq.set_index("Service")
@@ -72,8 +75,8 @@ trip_interval_route_freq = trip_interval_route_freq.set_index("Service")
 # # add the stop name, complex id, line to this data 
 
 # Saving all Data 
-if not os.path.exists('data'):
-    os.makedirs('data')
+if not os.path.exists('../data'):
+    os.makedirs('../data')
 
 hourly_route_trip_freq.to_csv("../data/hourly_route_trip_freq.csv")
 daily_route_trip_freq.to_csv("../data/daily_route_trip_freq.csv")

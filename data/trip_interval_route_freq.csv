@@ -1,4 +1,4 @@
-Service,Time Interval,Trains per Hour (Each Direction),Average Wait Time (Minutes)
+Service,Time Interval,TPH,Avg. Wait Time (Min.)
 1,Evening,8.0,7.0
 1,Late Night,4.0,16.0
 1,Midday,11.0,6.0
@@ -48,12 +48,10 @@ A,Rush Hour AM,10.0,6.0
 A,Rush Hour PM,12.0,5.0
 A,Weekend,6.0,10.0
 B,Evening,2.0,30.0
-B,Late Night,0.0,167.0
 B,Midday,8.0,8.0
 B,Rush Hour AM,6.0,10.0
 B,Rush Hour PM,7.0,9.0
 C,Evening,3.0,18.0
-C,Late Night,0.0,130.0
 C,Midday,7.0,8.0
 C,Rush Hour AM,6.0,10.0
 C,Rush Hour PM,7.0,9.0
@@ -76,24 +74,23 @@ F,Midday,9.0,7.0
 F,Rush Hour AM,13.0,5.0
 F,Rush Hour PM,12.0,5.0
 F,Weekend,5.0,12.0
-FS,Evening,4.0,14.0
-FS,Late Night,3.0,20.0
-FS,Midday,6.0,10.0
-FS,Rush Hour AM,6.0,10.0
-FS,Rush Hour PM,6.0,10.0
-FS,Weekend,5.0,12.0
-GS,Evening,12.0,5.0
-GS,Late Night,1.0,73.0
-GS,Midday,13.0,5.0
-GS,Rush Hour AM,16.0,4.0
-GS,Rush Hour PM,16.0,4.0
-GS,Weekend,10.0,6.0
-H,Evening,4.0,17.0
-H,Late Night,3.0,20.0
-H,Midday,4.0,15.0
-H,Rush Hour AM,3.0,20.0
-H,Rush Hour PM,4.0,15.0
-H,Weekend,3.0,18.0
+Fulton Shuttle,Evening,4.0,14.0
+Fulton Shuttle,Late Night,3.0,20.0
+Fulton Shuttle,Midday,6.0,10.0
+Fulton Shuttle,Rush Hour AM,6.0,10.0
+Fulton Shuttle,Rush Hour PM,6.0,10.0
+Fulton Shuttle,Weekend,5.0,12.0
+42nd St. Shuttle,Evening,12.0,5.0
+42nd St. Shuttle,Midday,13.0,5.0
+42nd St. Shuttle,Rush Hour AM,16.0,4.0
+42nd St. Shuttle,Rush Hour PM,16.0,4.0
+42nd St. Shuttle,Weekend,10.0,6.0
+Rock. Shuttle,Evening,4.0,17.0
+Rock. Shuttle,Late Night,3.0,20.0
+Rock. Shuttle,Midday,4.0,15.0
+Rock. Shuttle,Rush Hour AM,3.0,20.0
+Rock. Shuttle,Rush Hour PM,4.0,15.0
+Rock. Shuttle,Weekend,3.0,18.0
 J,Evening,5.0,13.0
 J,Late Night,3.0,18.0
 J,Midday,8.0,8.0
