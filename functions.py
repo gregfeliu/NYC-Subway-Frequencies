@@ -108,7 +108,7 @@ def choose_streamlit_time_freq_data(time_freq:str):
         returned_df = returned_df.drop(columns=['Day of Week'])
         returned_df = returned_df.round()
         returned_df = returned_df.astype({"TPH": 'int'
-                                        , "Wait Time (Min.)": 'int'})
+                                        , "Avg. Wait Time (Min.)": 'int'})
     return returned_df
 
 def filter_streamit_data(dataframe:pd.DataFrame
