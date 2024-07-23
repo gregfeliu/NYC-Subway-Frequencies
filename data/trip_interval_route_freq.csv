@@ -1,4 +1,4 @@
-Service,Time Interval,TPH,Avg. Wait Time (Min.)
+Service,Time Interval,TPH,Avg. Time B/n Trains
 1,Evening,8.0,7.0
 1,Late Night,4.0,16.0
 1,Midday,11.0,6.0

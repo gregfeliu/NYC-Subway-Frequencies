@@ -108,7 +108,7 @@ def choose_streamlit_time_freq_data(time_freq:str):
         returned_df = returned_df.drop(columns=['Day of Week'])
         returned_df = returned_df.round()
         returned_df = returned_df.astype({"TPH": 'int'
-                                        , "Avg. Wait Time (Min.)": 'int'})
+                                        , "Avg. Time B/n Trains": 'int'})
     return returned_df
 
 def filter_streamit_data(dataframe:pd.DataFrame
@@ -149,5 +149,5 @@ def streamlit_specific_adjustments(dataframe: pd.DataFrame):
     dataframe['Service'] = dataframe['Service'].replace(service_replacements_dict)
     # removing marginal services in time intervals 
     # # (e.g.: B will count as late night when starting at 5:55 am)
-    dataframe = dataframe[dataframe['Avg. Wait Time (Min.)']<31]
+    dataframe = dataframe[dataframe['Avg. Time B/n Trains']<31]
     return dataframe

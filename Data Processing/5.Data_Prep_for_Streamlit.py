@@ -26,7 +26,7 @@ hourly_route_trip_freq = hourly_route_trip_freq.drop(columns=['route_time_second
                                                             , 'headway_seconds'
                                                             , 'route_time_minutes'])
 hourly_route_trip_freq = hourly_route_trip_freq.round()
-hourly_route_trip_freq.columns = ['Service', 'Day of Week', 'Hour', 'TPH', 'Avg. Wait Time (Min.)']
+hourly_route_trip_freq.columns = ['Service', 'Day of Week', 'Hour', 'TPH', 'Avg. Time B/n Trains']
 
 ### daily
 daily_route_trip_freq = hourly_route_trip_freq.drop(columns=['Hour'])
@@ -42,7 +42,7 @@ trip_interval_route_freq = trip_interval_route_freq.drop(columns=['route_time_se
                                                             , 'route_time_minutes'])
 # add custom time period ordering 
 trip_interval_route_freq = trip_interval_route_freq.round()
-trip_interval_route_freq.columns = ['Service', 'Time Interval', 'TPH', 'Avg. Wait Time (Min.)']
+trip_interval_route_freq.columns = ['Service', 'Time Interval', 'TPH', 'Avg. Time B/n Trains']
 
 trip_interval_route_freq = trip_interval_route_freq.round()
 
