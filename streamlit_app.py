@@ -3,15 +3,17 @@
 import pandas as pd 
 import numpy as np
 import streamlit as st
-# st.write(st.__version__)
-# from streamlit_dynamic_filters import DynamicFilters
 from functions import *
 
 
 # title 
 st.title('NYC Subway Frequencies')
-## st.subheader('All Scheduled Subways Services and Stations All of the Time')
-st.subheader('Frequencies for all Subway Services and Stations for all Possible Hours')
+# st.subheader('Scheduled Subways Service Frequencies for Any Time, Day or Night')
+# st.subheader('Frequencies for all Subway Services and Stations for all Possible Hours')
+st.caption("""Use this app to find the frequency for any subway service or station
+        in the system. Without looking at any schedules, you will
+        be able to estimate how long it will take for your service to arrive.""")
+st.caption("""**To start, please select which time frequency and service you would like to view below.**""")
 
 # data 
 ### hourly
@@ -24,11 +26,11 @@ trip_interval_route_freq = load_original_data('trip_interval_route_freq')
 # tab selection 
 tab_selector = st.sidebar.radio("How would you like to view the data?",
             ("Service Frequencies", "Service Comparisons", "Appendix"))
-# st.sidebar.write(f"You selected *{tab_selector}*")
+
 if tab_selector == "Service Frequencies":
     # MAIN SECTION
     # user picks the time granularity
-    left_column, right_column,  = st.columns(2)
+    left_column, right_column, = st.columns(2)
     with left_column:
         time_freq = st.selectbox(
             "Time Frequency",
@@ -129,8 +131,7 @@ elif tab_selector=="Service Comparisons":
 # elif tab_selector == 'Fun Facts About the System':
 #     st.caption("""Use this app to find the frequency for any subway service or station
 #             in the system. Without looking at any schedules, you will
-#             be able to have an idea of how long a train will take to arrive
-#             at your station or for the service as a whole
+#             be able to estimate how long a train will take to arrive for a service as a whole.
 #             **To start, please select how you would like to view the data in the sidebar**""")
 
     # Helpful information about the data in the sidebar and displaying the data
