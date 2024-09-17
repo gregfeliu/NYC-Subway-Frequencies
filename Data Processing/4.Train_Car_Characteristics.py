@@ -3,11 +3,18 @@
 ## Imports
 import pandas as pd 
 import os
+import sys
 import numpy as np
+
+current_dir = os.path.dirname(os.path.abspath(__file__))
+parent_dir = os.path.dirname(current_dir)
+# Add the parent directory to sys.path
+sys.path.append(parent_dir)
 from functions import *
 
+
 ### Data Imports
-first_stop_in_trip = pd.read_csv("saved_data/first_stop_in_trip.csv", index_col=0)
+first_stop_in_trip = pd.read_csv(f"{parent_dir}/saved_data/first_stop_in_trip.csv", index_col=0)
 
 # a dictionary showing the length of each car for each line 
 # source: https://en.wikipedia.org/wiki/New_York_City_Subway_rolling_stock
@@ -100,6 +107,6 @@ train_area_df['capacity'] = [int(train_area_df['number_of_cars'][x] * train_area
                              for x in range(train_area_df.shape[0])]
 
 # Saving the DataFrame
-if not os.path.exists('saved_data'):
-    os.makedirs('saved_data')
-train_area_df.to_csv("saved_data/length_of_each_train.csv")
+if not os.path.exists(f'{parent_dir}/saved_data'):
+    os.makedirs(f'{parent_dir}/saved_data')
+train_area_df.to_csv(f"{parent_dir}/saved_data/length_of_each_train.csv")

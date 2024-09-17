@@ -2,22 +2,29 @@
 
 ## Imports
 import pandas as pd 
+pd.set_option('future.no_silent_downcasting', True)
 import os
 import numpy as np
+import sys
 import datetime
+current_dir = os.path.dirname(os.path.abspath(__file__))
+parent_dir = os.path.dirname(current_dir)
+# Add the parent directory to sys.path
+sys.path.append(parent_dir)
 from functions import *
+
 
 ### Importing Data
 # https://data.ny.gov/Transportation/MTA-Subway-Stations-Map/p6ps-59h2
-stations_df = pd.read_csv("data/MTA_Subway_Stations_20240325.csv")
+stations_df = pd.read_csv(f"{parent_dir}/data/MTA_Subway_Stations_20240325.csv")
 stations_df = stations_df.drop(columns=['ADA', 'ADA Northbound', 'ADA Southbound'
                                         , 'ADA Notes', 'Georeference'])
 station_count_df = pd.DataFrame(stations_df.groupby('Complex ID').count()['Station ID']).reset_index()
 station_count_df.columns = ['Complex ID', 'stations_in_complex_count']
 stations_df = stations_df.merge(station_count_df, how='left', on='Complex ID')
 
-stop_times_df = pd.read_csv("data/google_transit/stop_times.txt")
-train_area_df = pd.read_csv("saved_data/length_of_each_train.csv", index_col=0)
+stop_times_df = pd.read_csv(f"{parent_dir}/data/google_transit/stop_times.txt")
+train_area_df = pd.read_csv(f"{parent_dir}/saved_data/length_of_each_train.csv", index_col=0)
 
 ## Data Adjustments
 stop_times_df['departure_time']  = [str(int(x[0:2]) - 24) + x[2:] if int(x[0:2]) >= 24 else x
@@ -50,8 +57,8 @@ non_late_night_full_schedule = upsample_weekday_values(non_late_night_stop_times
 trains_per_waking_hour_by_station = round(non_late_night_full_schedule.groupby('parent_stop_id').count() / 18 / 7 / 2, 2)[['trip_id']]
 trains_per_waking_hour_by_station.reset_index(inplace=True)
 # train area per hour during weekdays per direction
-train_area_per_waking_hour_by_station = round(non_late_night_full_schedule.groupby('parent_stop_id').sum() / 18 / 7 / 2, 2)[['trainset_area']]
-train_area_per_waking_hour_by_station.reset_index(inplace=True)
+train_area_per_waking_hour_by_station = non_late_night_full_schedule.groupby('parent_stop_id').sum()[['trainset_area']].reset_index()
+train_area_per_waking_hour_by_station['trainset_area'] = round(train_area_per_waking_hour_by_station['trainset_area'] / 18 / 7 / 2, 2)
 train_info_per_waking_hour_by_station = pd.merge(trains_per_waking_hour_by_station
                                                   , train_area_per_waking_hour_by_station)
 train_info_per_waking_hour_by_station.columns = ['parent_stop_id', 'trains_per_hour', 'hourly_trainset_area']
@@ -80,14 +87,15 @@ for idx, interval in enumerate(stop_times_df['train_time_interval'].unique()):
         station_frequency_interval_df = station_frequency_interval_df.drop(columns=['train_time_interval'])
         station_frequency_interval_df.columns=['parent_stop_id', interval]
         # adding to total dataframe
-        station_info_w_frequency = station_info_w_frequency.merge(station_frequency_interval_df
-                                        , how='left', left_on='GTFS Stop ID', right_on='parent_stop_id')
+        station_info_w_frequency = pd.merge(station_info_w_frequency, station_frequency_interval_df, how='left'
+                                            , left_on='GTFS Stop ID', right_on='parent_stop_id'
+                                            , suffixes=[f'x_{interval}', f'y_{interval}'])
         # station_info_w_frequency.drop(columns=['parent_stop_id_x', 'parent_stop_id_y'], inplace=True)
 station_info_w_frequency.drop(columns=[col for col in station_info_w_frequency.columns 
                                        if 'parent_stop_id' in col], axis=1, inplace=True)
 
 # Saving the Data 
-if not os.path.exists('saved_data'):
-    os.makedirs('saved_data')
-stations_df.to_csv("saved_data/stations_df.csv")
-station_info_w_frequency.to_csv('saved_data/station_info_w_frequency.csv')
+if not os.path.exists(f'{parent_dir}/saved_data'):
+    os.makedirs(f'{parent_dir}/saved_data')
+stations_df.to_csv(f"{parent_dir}/saved_data/stations_df.csv")
+station_info_w_frequency.to_csv(f'{parent_dir}/saved_data/station_info_w_frequency.csv')

@@ -19,7 +19,7 @@ from functions import *
 
 # data 
 ### hourly
-hourly_route_trip_freq = pd.read_csv("../data/hourly_route_trip_freq.csv", index_col=0)
+hourly_route_trip_freq = pd.read_csv(f"{parent_dir}/saved_data/hourly_route_trip_freq.csv", index_col=0)
 hourly_route_trip_freq = hourly_route_trip_freq[hourly_route_trip_freq['route_id']!='SI']
 hourly_route_trip_freq = hourly_route_trip_freq.drop(columns=['route_time_seconds'
                                                             , 'Avg_num_trains_running'
@@ -34,7 +34,7 @@ daily_route_trip_freq = daily_route_trip_freq.groupby(['Service', 'Day of Week']
 daily_route_trip_freq = daily_route_trip_freq.round()
 daily_route_trip_freq = daily_route_trip_freq.reset_index()
 ## train time interval
-trip_interval_route_freq = pd.read_csv("../data/trip_interval_route_freq.csv", index_col=0)
+trip_interval_route_freq = pd.read_csv(f"{parent_dir}/saved_data/trip_interval_route_freq.csv", index_col=0)
 trip_interval_route_freq = trip_interval_route_freq[trip_interval_route_freq['route_id']!='SI']
 trip_interval_route_freq = trip_interval_route_freq.drop(columns=['route_time_seconds'
                                                             , 'Avg_num_trains_running'
@@ -47,9 +47,9 @@ trip_interval_route_freq.columns = ['Service', 'Time Interval', 'TPH', 'Avg. Tim
 trip_interval_route_freq = trip_interval_route_freq.round()
 
 ## Removing data for the G for all time granularities (for the summer schedule)
-hourly_route_trip_freq = hourly_route_trip_freq[hourly_route_trip_freq['Service']!='G']
-daily_route_trip_freq = daily_route_trip_freq[daily_route_trip_freq['Service']!='G']
-trip_interval_route_freq = trip_interval_route_freq[trip_interval_route_freq['Service']!='G']
+# hourly_route_trip_freq = hourly_route_trip_freq[hourly_route_trip_freq['Service']!='G']
+# daily_route_trip_freq = daily_route_trip_freq[daily_route_trip_freq['Service']!='G']
+# trip_interval_route_freq = trip_interval_route_freq[trip_interval_route_freq['Service']!='G']
 
 # Final Adjustments
 hourly_route_trip_freq = streamlit_specific_adjustments(hourly_route_trip_freq)
@@ -75,9 +75,9 @@ trip_interval_route_freq = trip_interval_route_freq.set_index("Service")
 # # add the stop name, complex id, line to this data 
 
 # Saving all Data 
-if not os.path.exists('../data'):
-    os.makedirs('../data')
+if not os.path.exists(f"{parent_dir}/data"):
+    os.makedirs(f"{parent_dir}/data")
 
-hourly_route_trip_freq.to_csv("../data/hourly_route_trip_freq.csv")
-daily_route_trip_freq.to_csv("../data/daily_route_trip_freq.csv")
-trip_interval_route_freq.to_csv("../data/trip_interval_route_freq.csv")
+hourly_route_trip_freq.to_csv(f"{parent_dir}/data/hourly_route_trip_freq.csv")
+daily_route_trip_freq.to_csv(f"{parent_dir}/data/daily_route_trip_freq.csv")
+trip_interval_route_freq.to_csv(f"{parent_dir}/data/trip_interval_route_freq.csv")

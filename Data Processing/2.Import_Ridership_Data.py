@@ -9,8 +9,13 @@ import sys
 library_path = os.path.abspath(os.path.join(os.getcwd(), os.pardir))
 if library_path not in sys.path:
     sys.path.append(library_path)
-from functions import *
+# from functions import *
 
+current_dir = os.path.dirname(os.path.abspath(__file__))
+parent_dir = os.path.dirname(current_dir)
+# Add the parent directory to sys.path
+sys.path.append(parent_dir)
+from functions import *
 
 # Only making an api call if we don't already have the hourly station ridership data 
 try:
@@ -28,6 +33,6 @@ except Exception as e:
     hourly_station_ridership['departure_hour'] = hourly_station_ridership['time_as_datetime'].dt.hour
     hourly_station_ridership['departure_day'] = hourly_station_ridership['time_as_datetime'].dt.weekday
     hourly_station_ridership.drop(columns=['transit_timestamp'], inplace=True)
-    if not os.path.exists('saved_data'):
-        os.makedirs('saved_data')
-    hourly_station_ridership.to_csv("saved_data/hourly_station_ridership.csv")
+    if not os.path.exists(f'{parent_dir}/saved_data'):
+        os.makedirs(f'{parent_dir}/saved_data')
+    hourly_station_ridership.to_csv(f"{parent_dir}/saved_data/hourly_station_ridership.csv")
