@@ -25,7 +25,7 @@ trips_df = pd.read_csv(f"{parent_dir}/data/google_transit/trips.txt")
 
 # Adjusting the data
 ### finding all non-standard trips to remove later
-non_standard_trips = trips_df[~trips_df['service_id'].isin(['Weekday', 'Saturday', 'Sunday'])]
+non_standard_trips = trips_df[trips_df['service_id'].str.contains('-1')]
 # G, J/Z are having service changes
 print(f'The services {non_standard_trips['route_id'].unique()} are having long term service changes')
 
@@ -37,6 +37,7 @@ stop_times_df['departure_time'] = pd.to_datetime(stop_times_df['departure_time']
 stop_times_df = group_into_day_type(stop_times_df, 'trip_id')
 stop_times_df = stop_times_df.drop(columns=['stop_id', 'arrival_time'])
 stop_times_df = stop_times_df[~stop_times_df['departure_time'].isnull()]
+# removes 0.2% of all trip ids
 stop_times_df = stop_times_df[~stop_times_df['trip_id'].isin(non_standard_trips['trip_id'])]
 
 # All Trips
