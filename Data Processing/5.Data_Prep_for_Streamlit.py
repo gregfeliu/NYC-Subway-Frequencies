@@ -46,11 +46,6 @@ trip_interval_route_freq.columns = ['Service', 'Time Interval', 'TPH', 'Avg. Tim
 
 trip_interval_route_freq = trip_interval_route_freq.round()
 
-## Removing data for the G for all time granularities (for the summer schedule)
-hourly_route_trip_freq = hourly_route_trip_freq[hourly_route_trip_freq['Service']!='G']
-daily_route_trip_freq = daily_route_trip_freq[daily_route_trip_freq['Service']!='G']
-trip_interval_route_freq = trip_interval_route_freq[trip_interval_route_freq['Service']!='G']
-
 # Final Adjustments
 hourly_route_trip_freq = streamlit_specific_adjustments(hourly_route_trip_freq)
 daily_route_trip_freq = streamlit_specific_adjustments(daily_route_trip_freq)

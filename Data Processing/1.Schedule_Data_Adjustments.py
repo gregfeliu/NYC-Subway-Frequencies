@@ -1,7 +1,7 @@
 # Schedule Data 
 ## Outputs:
 ##         - All trips in the schedule  
-##         - Info about all Service  
+##         - Info about all Service s 
 ##         - Hourly Frequencies 
 ##         - Train Time Interval Frequencies 
 
@@ -10,11 +10,6 @@ import pandas as pd
 import numpy as np
 import sys
 import os
-# getting functions from the parent directory
-# library_path = os.path.abspath(os.path.join(os.getcwd(), os.pardir))
-# if library_path not in sys.path:
-#     sys.path.append(library_path)
-# from functions import *
 
 # Get the current file's directory
 current_dir = os.path.dirname(os.path.abspath(__file__))
@@ -29,14 +24,20 @@ stops_df = pd.read_csv(f"{parent_dir}/data/google_transit/stops.txt")
 trips_df = pd.read_csv(f"{parent_dir}/data/google_transit/trips.txt")
 
 # Adjusting the data
+### finding all non-standard trips to remove later
+non_standard_trips = trips_df[~trips_df['service_id'].isin(['Weekday', 'Saturday', 'Sunday'])]
+# G, J/Z are having service changes
+print(f'The services {non_standard_trips['route_id'].unique()} are having long term service changes')
+
 ### making the times within a 24 hour range -- originally is up to 27 
 stop_times_df['departure_time'] = [str(int(x[0:2]) - 24) + x[2:] if int(x[0:2]) >= 24 else x
-                          for x in stop_times_df['departure_time']]
+                                    for x in stop_times_df['departure_time']]
 # converting to a datetime
 stop_times_df['departure_time'] = pd.to_datetime(stop_times_df['departure_time'], format="%H:%M:%S", errors='coerce')
 stop_times_df = group_into_day_type(stop_times_df, 'trip_id')
 stop_times_df = stop_times_df.drop(columns=['stop_id', 'arrival_time'])
 stop_times_df = stop_times_df[~stop_times_df['departure_time'].isnull()]
+stop_times_df = stop_times_df[~stop_times_df['trip_id'].isin(non_standard_trips['trip_id'])]
 
 # All Trips
 first_stop_in_trip = stop_times_df[stop_times_df['stop_sequence']==1]
@@ -67,19 +68,20 @@ for idx, row in first_stop_in_trip.iterrows():
 first_stop_in_trip['train_time_interval'] = train_time_interval_list
 
 # Info about each Service
-trip_time_diff = stop_times_df.groupby('trip_id')['departure_time'].agg(np.ptp)
-# no trip is longer than 2 hours so anything larger than that will be dropped 
-# the late night trains mess up the time difference calculation
-# 97.6% of all trips are valid
-valid_trip_times = pd.DataFrame(trip_time_diff[trip_time_diff.values<pd.Timedelta('0 days 02:00:00')]).reset_index()
+# calculating the raw hour:minute:second values because the time going above 24 hours is difficult to deal with
+stop_times_df = pd.read_csv(f"{parent_dir}/data/google_transit/stop_times.txt")
+str_departure_time = [str_time_to_minutes(x) for x in stop_times_df['departure_time']]
+stop_times_df['str_departure_time'] = str_departure_time
+trip_time_diff = stop_times_df.groupby('trip_id')['str_departure_time'].agg(np.ptp)
+valid_trip_times = pd.DataFrame(trip_time_diff).reset_index()
 valid_trip_times['route_id'] = [x.split("_")[-1].split('.')[0] 
                                         for x in valid_trip_times['trip_id']]
 # Average trip time for each service
-avg_trip_time = pd.DataFrame(valid_trip_times.groupby('route_id')['departure_time'].mean()).reset_index()
-avg_trip_time['route_time_seconds'] = [round(x.total_seconds()) for x in avg_trip_time['departure_time']]
-avg_trip_time['route_time_minutes'] = [round(x / 60, 1) for x in avg_trip_time['route_time_seconds']]
+avg_trip_time = pd.DataFrame(valid_trip_times.groupby('route_id')['str_departure_time'].mean()).reset_index()
+avg_trip_time['route_time_seconds'] = [round(x * 60) for x in avg_trip_time['str_departure_time']]
+avg_trip_time['route_time_minutes'] = [round(x, 1) for x in avg_trip_time['str_departure_time']]
 # the amount of time it takes to reach one end of the route from the other
-avg_trip_time_final = avg_trip_time.drop(columns='departure_time')
+avg_trip_time_final = avg_trip_time.drop(columns='str_departure_time')
 
 
 # Hourly 

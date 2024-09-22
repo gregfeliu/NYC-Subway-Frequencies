@@ -151,3 +151,10 @@ def streamlit_specific_adjustments(dataframe: pd.DataFrame):
     # # (e.g.: B will count as late night when starting at 5:55 am)
     dataframe = dataframe[dataframe['Avg. Time B/n Trains']<31]
     return dataframe
+
+def str_time_to_minutes(timestamp_value: str):
+    hour = int(timestamp_value[0:2]) * 60
+    minute = int(timestamp_value[3:5]) 
+    second = int(timestamp_value[6:8]) / 60
+    minutes_past_midnight = hour + minute + second 
+    return minutes_past_midnight

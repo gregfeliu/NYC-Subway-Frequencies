@@ -144,7 +144,7 @@ elif tab_selector == 'Appendix':
             at your station or for the service as a whole. It also allows you to 
             compare and evaluate different services for future trips.""")
     st.divider()
-    st.markdown("""This app uses the [static MTA GTFS Schedule for Q4 2024](http://web.mta.info/developers/data/nyct/subway/google_transit.zip). 
+    st.markdown("""This app uses the [static MTA GTFS Schedule from August 12, 2024 to December 12, 2024](http://web.mta.info/developers/data/nyct/subway/google_transit.zip). 
             The schedule is valid for all planned trips taking into account long term service outages/reroutes. """)
     st.caption("To learn more about the conclusions of this project, go to the project's [GitHub page](https://github.com/gregfeliu/NYC-Subway-Frequencies/tree/main?tab=readme-ov-file)")
 

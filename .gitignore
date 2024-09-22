@@ -27,6 +27,9 @@ saved_data/
 data/google_transit
 data/google_transit_to_september
 
+# Other Directories
+Notebooks/testing.ipynb
+
 # Other
 .DS_Store
 .devcontainer
