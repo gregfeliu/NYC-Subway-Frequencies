@@ -10,39 +10,44 @@ import requests
 def determine_train_time_intervals(arrival_time, day_of_week: str):
     arrival_time = arrival_time.time()
     train_time_interval = None
-    if datetime.time(0, 0) <= arrival_time < datetime.time(6, 30):
+    if datetime.time(0, 0) <= arrival_time < datetime.time(6, 00):
         train_time_interval = 'Late Night'
     elif day_of_week in ['Saturday', 'Sunday']:
         train_time_interval = 'Weekend'
-    elif datetime.time(6, 30) <= arrival_time < datetime.time(9, 30):
+    elif datetime.time(6, 00) <= arrival_time < datetime.time(9, 00):
         train_time_interval = 'Rush Hour AM'
-    elif datetime.time(9, 30) <= arrival_time < datetime.time(15, 30):
+    elif datetime.time(9, 00) <= arrival_time < datetime.time(16, 00):
         train_time_interval = 'Midday'
-    elif datetime.time(15, 30) <= arrival_time < datetime.time(20, 0):
+    elif datetime.time(16, 00) <= arrival_time < datetime.time(19, 0):
         train_time_interval = 'Rush Hour PM'
-    elif datetime.time(20, 0) <= arrival_time <= datetime.time(23, 59):
+    elif datetime.time(19, 0) <= arrival_time <= datetime.time(23, 59):
         train_time_interval = 'Evening'
     return train_time_interval
 
 def scale_time_intervals_to_hour(df_grouped_at_interval_level: pd.DataFrame):
+    # using these hours because 
+        # 1. Reddit commenters
+            # a: https://www.reddit.com/r/nycrail/comments/1g8ro9h/when_does_rush_hour_start_and_end_for_the_subway/
+            # b: https://www.reddit.com/r/nycrail/comments/107u1ne/can_someone_explain_rush_hour_to_me/
+        # 2. timetable for 5 train says it directly: https://new.mta.info/document/9446
     for idx, row in df_grouped_at_interval_level.iterrows():
         if row['train_time_interval'] == 'Late Night':
-            new_tph = (row['trains_per_hour'] / 3) / 6.5 # multiply by days ratio and hours ratio 
+            new_tph = (row['trains_per_hour'] / 3) / 6 # multiply by days ratio and hours ratio 
             df_grouped_at_interval_level.at[idx, 'trains_per_hour'] = new_tph
         elif row['train_time_interval'] == 'Weekend':
-            new_tph = (row['trains_per_hour'] / 2) / 17.5 # multiply by days ratio and hours ratio 
+            new_tph = (row['trains_per_hour'] / 2) / 18 # multiply by days ratio and hours ratio 
             df_grouped_at_interval_level.at[idx, 'trains_per_hour'] = new_tph
         elif row['train_time_interval'] == 'Rush Hour AM':
             new_tph = row['trains_per_hour'] / 3 # multiply by days ratio and hours ratio 
             df_grouped_at_interval_level.at[idx, 'trains_per_hour'] = new_tph
         elif row['train_time_interval'] == 'Midday':
-            new_tph = row['trains_per_hour'] / 6 # multiply by days ratio and hours ratio 
+            new_tph = row['trains_per_hour'] / 7 # multiply by days ratio and hours ratio 
             df_grouped_at_interval_level.at[idx, 'trains_per_hour'] = new_tph
         elif row['train_time_interval'] == 'Rush Hour PM':
-            new_tph = row['trains_per_hour'] / 4.5 # multiply by days ratio and hours ratio 
+            new_tph = row['trains_per_hour'] / 3 # multiply by days ratio and hours ratio 
             df_grouped_at_interval_level.at[idx, 'trains_per_hour'] = new_tph
         elif row['train_time_interval'] == 'Evening':
-            new_tph = row['trains_per_hour'] / 4 # multiply by days ratio and hours ratio 
+            new_tph = row['trains_per_hour'] / 5 # multiply by days ratio and hours ratio 
             df_grouped_at_interval_level.at[idx, 'trains_per_hour'] = new_tph
     return df_grouped_at_interval_level
 

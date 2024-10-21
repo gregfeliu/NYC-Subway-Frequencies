@@ -10,7 +10,7 @@ So why *do* New Yorkers have such strong opinions about certain services? Are th
 ### Number of Train sets Running at One Time
 The primary question that sparked this project is this: **how many train sets are running in the NYC subway system at any one time?**. While this seems like a simple question, it's surprisingly complex: given a schedule, how do we know that a train is running at the exact time that we're investigating? How can scale our investigation to all hours of the day? My approach was to find the length of time it takes to run a route (one terminal to the other) and divide that by the hourly tph. With this, I am able to determine the average number of trains running at that hour. 
 
-I found that there are an average of around 290 train sets running at any one time in the NYC Subway! That's a ton of equipment being moved! Further, during afternoon rush hour on weekdays (4 p.m. to be exact) there can be up to 499 train sets running at once! On the other end of the spectrum, as few as 122 train sets can be running. Still quite an impressive feat! See the below chart for how the number of trains running in the NYC Subway vary by day and hour:
+I found that there are an average of around 290 train sets running at any one time in the NYC Subway! That's a ton of equipment being moved! Further, during afternoon rush hour on weekdays (4 p.m. to be exact) there can be up to 499 train sets running at once! On the other end of the spectrum, during late nights, as few as 122 train sets can be running. Still quite an impressive feat! See the below chart for how the number of trains running in the NYC Subway vary by day and hour:
 
 ![](images/hourly_number_of_trains_by_day.png)
 
@@ -24,7 +24,7 @@ Speaking of service by time period, It may be easier to divide the train schedul
 This puts it even more into perspective how the wait time will differ depending on when you access the train. On average, people will wait 3 times as long for a train late night as compared to during either rush hour!
 
 ### Service Level Comparison
-All subway services are most frequent during rush hours (6:30 - 9:30 a.m. and 3:30 - 8 p.m.). Using these time periods, I will show the amount of time between each scheduled train for each service so that we can compare the services (G train removed due to large scale service changes): 
+All subway services are most frequent during rush hours (6:00 - 9:00 a.m. and 3:00 - 7:00 p.m.). Using these time periods, I will show the amount of time between each scheduled train for each service so that we can compare the services: 
 
 ![](images/service_comparison_rush_hour.png)
 
@@ -36,7 +36,6 @@ Recently there's a lot of talk about the ["15 minute city"](https://en.wikipedia
 ![](images/movie.gif)
 
 As you can see, some stations are much more desirable to live near than others. Just to take a clear example, being at the end of the Bay Ridge services (far bottom left in Brooklyn) is much worse than being near Coney Island (far bottom of greyed-out Brooklyn) even though both are terminal stations: the Coney Island station has a visible catchment area starting at 5 minutes whereas the Bay Ridge one doesn't have one until 15 minutes. One obvious reason for this is that the Bay Ridge station is served by the R train whereas the Coney Island - Stillwell Avenue station is served by the D, N, Q, F and \<F> trains. 
-
 
 Moreover, one can see extremely clearly what areas are a (subway) transit desert and areas aren't -- Manhattan versus eastern Queens is night and day in terms of subway service accessibility. 
 

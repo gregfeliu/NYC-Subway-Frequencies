@@ -78,7 +78,7 @@ cars_per_train_dict['7'] = 11
 train_area_df['number_of_cars'] = train_area_df['route_id'].replace(cars_per_train_dict)
 for idx in range(len(train_area_df)):
     value = train_area_df['number_of_cars'][idx]
-    if np.isnan(value):
+    if pd.isnull(value):
         if train_area_df['division'][idx] == 'A':
             value = 10
         elif train_area_df['division'][idx] == 'B':

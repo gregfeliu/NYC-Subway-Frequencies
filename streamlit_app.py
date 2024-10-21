@@ -158,10 +158,10 @@ elif time_freq == 'Train Time Interval':
     st.sidebar.markdown("""
                 - *Late Night*: Midnight to 6 am, all days
                 - *Weekend*: All weekends outside of late nights
-                - *Rush Hour AM*: Weekdays from 6:30 am to 9:30 am
-                - *Midday*: Weekdays from 9:30 am to 3:30 pm
-                - *Rush Hour PM*: Weekdays from 3:30 pm to 8 pm
-                - *Evenings*: Weekdays from 8 pm to midnight""")
+                - *Rush Hour AM*: Weekdays from 6:00 am to 9:00 am
+                - *Midday*: Weekdays from 9:00 am to 4:00 pm
+                - *Rush Hour PM*: Weekdays from 4:00 pm to 7 pm
+                - *Evenings*: Weekdays from 7 pm to midnight""")
 elif time_freq == 'Overall': 
     st.sidebar.markdown(f"""The *{time_freq}* data is for **all** hours, including late night""")
 

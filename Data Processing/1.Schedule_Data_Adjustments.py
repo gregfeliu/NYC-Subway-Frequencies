@@ -118,18 +118,6 @@ route_frequency_by_day.columns = ['route_id', 'day_of_week', 'trains_per_hour']
 route_frequency_by_day['headway_seconds'] = 3600 / route_frequency_by_day['trains_per_hour']
 route_frequency_by_day['headway_minutes'] = 60 / route_frequency_by_day['trains_per_hour']
 route_frequency_by_day = route_frequency_by_day.round(1)
-# route_trip_freq_by_day = route_trip_freq_by_hour.groupby(['route_id']).sum() / 24
-# # upsampling the weekday data 
-# route_trip_freq_by_day.columns = ['Saturday', 'Sunday', 'Weekday'
-#                                           , 'Weekday_Adjusted', 'Trains_per_Hour_Overall']
-# # the wait time is half of the mean time between trains
-# route_trip_freq_by_day['Headway_Minutes'] = 60 / route_trip_freq_by_day['Trains_per_Hour_Overall']
-# route_trip_freq_by_day = route_trip_freq_by_day.round(1)
-# daily_route_trip_freq = route_trip_freq_by_day.merge(avg_trip_time_final, on='route_id')
-# # doubling the result so that we have ALL trains not just southbound ones
-# daily_route_trip_freq['Avg_num_trains_running'] = round((daily_route_trip_freq['route_time_minutes'] / 60) * \
-#                                                         daily_route_trip_freq['Trains_per_Hour_Overall'] * 2, 1)
-
 
 # Saving all Data 
 if not os.path.exists(f'{parent_dir}/saved_data'):
