@@ -1,4 +1,4 @@
-Service,Day of Week,Hour,TPH,Avg. Time B/n Trains
+Service,Day of Week,Hour,TPH,Avg. Wait
 1,Saturday,0,3,20.0
 1,Saturday,1,3,20.0
 1,Saturday,2,3,20.0
