@@ -146,7 +146,7 @@ elif tab_selector == 'Appendix':
                When the train short turns, all stations past Myrtle-Wyckoff will receive less
                service than the app shows. Similarly, the actual amount of service provided
                to all stations West of Myrtle-Wyckoff are slightly undercounted.""")
-        st.caption("""Temporary express services that run in only one direction (e.g.: 6X, FX, Z)
+    st.caption("""Temporary express services that run in only one direction (e.g.: 6X, FX, Z)
                    are undercounted by half in this analysis. The reason being that this app
                    uses the frequency per direction of each service. If the service is only running
                    in one direction then the frequency in the actual service direction is shown
