@@ -138,12 +138,18 @@ elif tab_selector=="Service Comparisons":
 elif tab_selector == 'Appendix':
     time_freq = None
     
+    st.caption("""Use this app to find the frequency for any subway service or station
+            in the system. Without looking at any transit service app, you will
+            be able to estimate how long a train will take to arrive
+            at your station or for the service as a whole. It also allows you to 
+            compare and evaluate different services for future trips.""")
+    st.divider()
     st.markdown("**Notes about the Results**:")
     st.caption("""Each service frequency is determined by the average trip distance for all trips.
                This means that the stations in the 'core' of the route will be underrepresented
                and that the 'edges' of the route will be overrepresented. To put this concretely, the
-               L trains often short-turns at Myrtle-Wyckoff Avenues during Rush Hour(s).
-               When the train short turns, all stations past Myrtle-Wyckoff will receive less
+               L train often short-turns at Myrtle-Wyckoff Avenues during Rush Hour service.
+               When the train short turns, all stations East of Myrtle-Wyckoff will receive less
                service than the app shows. Similarly, the actual amount of service provided
                to all stations West of Myrtle-Wyckoff are slightly undercounted.""")
     st.caption("""Temporary express services that run in only one direction (e.g.: 6X, FX, Z)
@@ -151,12 +157,6 @@ elif tab_selector == 'Appendix':
                    uses the frequency per direction of each service. If the service is only running
                    in one direction then the frequency in the actual service direction is shown
                    as half of what it actually is""")
-    st.divider()
-    st.caption("""Use this app to find the frequency for any subway service or station
-            in the system. Without looking at any transit service app, you will
-            be able to estimate how long a train will take to arrive
-            at your station or for the service as a whole. It also allows you to 
-            compare and evaluate different services for future trips.""")
     st.divider()
     st.markdown("""This app uses the [static MTA GTFS Schedule from August 12, 2024 to December 12, 2024](http://web.mta.info/developers/data/nyct/subway/google_transit.zip). 
             The schedule is valid for all planned trips taking into account long term service outages/reroutes. """)
