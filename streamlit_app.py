@@ -138,6 +138,20 @@ elif tab_selector=="Service Comparisons":
 elif tab_selector == 'Appendix':
     time_freq = None
     
+    st.markdown("**Notes about the Results**:")
+    st.caption("""Each service frequency is determined by the average trip distance for all trips.
+               This means that the stations in the 'core' of the route will be underrepresented
+               and that the 'edges' of the route will be overrepresented. To put this concretely, the
+               L trains often short-turns at Myrtle-Wyckoff Avenues during Rush Hour(s).
+               When the train short turns, all stations past Myrtle-Wyckoff will receive less
+               service than the app shows. Similarly, the actual amount of service provided
+               to all stations West of Myrtle-Wyckoff are slightly undercounted.""")
+        st.caption("""Temporary express services that run in only one direction (e.g.: 6X, FX, Z)
+                   are undercounted by half in this analysis. The reason being that this app
+                   uses the frequency per direction of each service. If the service is only running
+                   in one direction then the frequency in the actual service direction is shown
+                   as half of what it actually is""")
+    st.divider()
     st.caption("""Use this app to find the frequency for any subway service or station
             in the system. Without looking at any transit service app, you will
             be able to estimate how long a train will take to arrive
