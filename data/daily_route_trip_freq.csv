@@ -36,8 +36,8 @@ E,Weekday,9.0,10.0
 F,Saturday,4.0,14.0
 F,Sunday,4.0,15.0
 F,Weekday,8.0,10.0
-Fulton Shuttle,Saturday,5.0,14.0
-Fulton Shuttle,Sunday,4.0,15.0
+Fulton Shuttle,Saturday,5.0,13.0
+Fulton Shuttle,Sunday,5.0,13.0
 Fulton Shuttle,Weekday,5.0,13.0
 G,Saturday,6.0,12.0
 G,Sunday,5.0,14.0

@@ -26,7 +26,7 @@ Service,Time Interval,TPH,Avg. Wait
 5,Evening,5.0,12.0
 5,Late Night,3.0,18.0
 5,Midday,8.0,8.0
-5,Rush Hour AM,12.0,5.0
+5,Rush Hour AM,11.0,5.0
 5,Rush Hour PM,9.0,6.0
 5,Weekend,6.0,11.0
 6,Evening,9.0,7.0
@@ -74,12 +74,12 @@ F,Midday,9.0,7.0
 F,Rush Hour AM,13.0,5.0
 F,Rush Hour PM,11.0,5.0
 F,Weekend,5.0,13.0
-Fulton Shuttle,Evening,5.0,13.0
+Fulton Shuttle,Evening,5.0,12.0
 Fulton Shuttle,Late Night,3.0,20.0
 Fulton Shuttle,Midday,6.0,10.0
 Fulton Shuttle,Rush Hour AM,6.0,11.0
 Fulton Shuttle,Rush Hour PM,6.0,10.0
-Fulton Shuttle,Weekend,5.0,12.0
+Fulton Shuttle,Weekend,6.0,11.0
 G,Evening,7.0,9.0
 G,Late Night,3.0,20.0
 G,Midday,8.0,8.0

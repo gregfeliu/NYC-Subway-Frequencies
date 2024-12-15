@@ -63,12 +63,12 @@ Service,Day of Week,Hour,TPH,Avg. Wait
 1,Weekday,13,10,6.0
 1,Weekday,14,11,6.0
 1,Weekday,15,12,5.0
-1,Weekday,16,16,4.0
-1,Weekday,17,14,4.0
+1,Weekday,16,15,4.0
+1,Weekday,17,15,4.0
 1,Weekday,18,15,4.0
-1,Weekday,19,13,5.0
+1,Weekday,19,14,4.0
 1,Weekday,20,12,5.0
-1,Weekday,21,10,6.0
+1,Weekday,21,9,7.0
 1,Weekday,22,6,10.0
 1,Weekday,23,5,12.0
 2,Saturday,0,3,20.0
@@ -268,8 +268,8 @@ Service,Day of Week,Hour,TPH,Avg. Wait
 4,Weekday,2,3,20.0
 4,Weekday,3,3,20.0
 4,Weekday,4,5,12.0
-4,Weekday,5,7,9.0
-4,Weekday,6,11,6.0
+4,Weekday,5,8,8.0
+4,Weekday,6,10,6.0
 4,Weekday,7,15,4.0
 4,Weekday,8,11,6.0
 4,Weekday,9,8,8.0
@@ -343,15 +343,15 @@ Service,Day of Week,Hour,TPH,Avg. Wait
 5,Weekday,5,6,10.0
 5,Weekday,6,12,5.0
 5,Weekday,7,13,5.0
-5,Weekday,8,10,6.0
-5,Weekday,9,8,8.0
+5,Weekday,8,9,7.0
+5,Weekday,9,9,7.0
 5,Weekday,10,7,9.0
 5,Weekday,11,8,8.0
 5,Weekday,12,7,9.0
 5,Weekday,13,8,8.0
 5,Weekday,14,9,7.0
-5,Weekday,15,13,5.0
-5,Weekday,16,10,6.0
+5,Weekday,15,12,5.0
+5,Weekday,16,11,6.0
 5,Weekday,17,7,9.0
 5,Weekday,18,7,9.0
 5,Weekday,19,6,10.0
@@ -420,12 +420,12 @@ Service,Day of Week,Hour,TPH,Avg. Wait
 6,Weekday,10,15,4.0
 6,Weekday,11,15,4.0
 6,Weekday,12,15,4.0
-6,Weekday,13,15,4.0
-6,Weekday,14,15,4.0
-6,Weekday,15,17,4.0
+6,Weekday,13,16,4.0
+6,Weekday,14,14,4.0
+6,Weekday,15,18,3.0
 6,Weekday,16,18,3.0
 6,Weekday,17,16,4.0
-6,Weekday,18,15,4.0
+6,Weekday,18,14,4.0
 6,Weekday,19,13,5.0
 6,Weekday,20,11,6.0
 6,Weekday,21,8,8.0
@@ -627,8 +627,8 @@ C,Sunday,21,5,12.0
 C,Weekday,5,3,20.0
 C,Weekday,6,6,10.0
 C,Weekday,7,6,10.0
-C,Weekday,8,6,10.0
-C,Weekday,9,8,8.0
+C,Weekday,8,7,9.0
+C,Weekday,9,7,9.0
 C,Weekday,10,7,9.0
 C,Weekday,11,8,8.0
 C,Weekday,12,7,9.0
@@ -863,8 +863,8 @@ Fulton Shuttle,Saturday,2,3,20.0
 Fulton Shuttle,Saturday,3,3,20.0
 Fulton Shuttle,Saturday,4,3,20.0
 Fulton Shuttle,Saturday,5,3,20.0
-Fulton Shuttle,Saturday,6,4,15.0
-Fulton Shuttle,Saturday,7,5,12.0
+Fulton Shuttle,Saturday,6,5,12.0
+Fulton Shuttle,Saturday,7,6,10.0
 Fulton Shuttle,Saturday,8,6,10.0
 Fulton Shuttle,Saturday,9,6,10.0
 Fulton Shuttle,Saturday,10,6,10.0
@@ -875,10 +875,10 @@ Fulton Shuttle,Saturday,14,6,10.0
 Fulton Shuttle,Saturday,15,6,10.0
 Fulton Shuttle,Saturday,16,6,10.0
 Fulton Shuttle,Saturday,17,6,10.0
-Fulton Shuttle,Saturday,18,5,12.0
-Fulton Shuttle,Saturday,19,5,12.0
-Fulton Shuttle,Saturday,20,5,12.0
-Fulton Shuttle,Saturday,21,4,15.0
+Fulton Shuttle,Saturday,18,6,10.0
+Fulton Shuttle,Saturday,19,6,10.0
+Fulton Shuttle,Saturday,20,6,10.0
+Fulton Shuttle,Saturday,21,5,12.0
 Fulton Shuttle,Saturday,22,4,15.0
 Fulton Shuttle,Saturday,23,3,20.0
 Fulton Shuttle,Sunday,0,3,20.0
@@ -887,22 +887,22 @@ Fulton Shuttle,Sunday,2,3,20.0
 Fulton Shuttle,Sunday,3,3,20.0
 Fulton Shuttle,Sunday,4,3,20.0
 Fulton Shuttle,Sunday,5,3,20.0
-Fulton Shuttle,Sunday,6,3,20.0
-Fulton Shuttle,Sunday,7,4,15.0
-Fulton Shuttle,Sunday,8,4,15.0
-Fulton Shuttle,Sunday,9,4,15.0
-Fulton Shuttle,Sunday,10,5,12.0
-Fulton Shuttle,Sunday,11,5,12.0
-Fulton Shuttle,Sunday,12,5,12.0
-Fulton Shuttle,Sunday,13,5,12.0
-Fulton Shuttle,Sunday,14,5,12.0
-Fulton Shuttle,Sunday,15,5,12.0
-Fulton Shuttle,Sunday,16,5,12.0
-Fulton Shuttle,Sunday,17,5,12.0
-Fulton Shuttle,Sunday,18,5,12.0
-Fulton Shuttle,Sunday,19,5,12.0
-Fulton Shuttle,Sunday,20,5,12.0
-Fulton Shuttle,Sunday,21,4,15.0
+Fulton Shuttle,Sunday,6,5,12.0
+Fulton Shuttle,Sunday,7,6,10.0
+Fulton Shuttle,Sunday,8,6,10.0
+Fulton Shuttle,Sunday,9,6,10.0
+Fulton Shuttle,Sunday,10,6,10.0
+Fulton Shuttle,Sunday,11,6,10.0
+Fulton Shuttle,Sunday,12,6,10.0
+Fulton Shuttle,Sunday,13,6,10.0
+Fulton Shuttle,Sunday,14,6,10.0
+Fulton Shuttle,Sunday,15,6,10.0
+Fulton Shuttle,Sunday,16,6,10.0
+Fulton Shuttle,Sunday,17,6,10.0
+Fulton Shuttle,Sunday,18,6,10.0
+Fulton Shuttle,Sunday,19,6,10.0
+Fulton Shuttle,Sunday,20,6,10.0
+Fulton Shuttle,Sunday,21,5,12.0
 Fulton Shuttle,Sunday,22,4,15.0
 Fulton Shuttle,Sunday,23,3,20.0
 Fulton Shuttle,Weekday,0,3,20.0
@@ -925,7 +925,7 @@ Fulton Shuttle,Weekday,16,6,10.0
 Fulton Shuttle,Weekday,17,6,10.0
 Fulton Shuttle,Weekday,18,6,10.0
 Fulton Shuttle,Weekday,19,6,10.0
-Fulton Shuttle,Weekday,20,5,12.0
+Fulton Shuttle,Weekday,20,6,10.0
 Fulton Shuttle,Weekday,21,5,12.0
 Fulton Shuttle,Weekday,22,4,15.0
 Fulton Shuttle,Weekday,23,3,20.0

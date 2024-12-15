@@ -157,7 +157,7 @@ elif time_freq == 'Train Time Interval':
     st.sidebar.markdown(f"""The *{time_freq}* schedule has 6 categories:""")
     st.sidebar.markdown("""
                 - *Late Night*: Midnight to 6 am, all days
-                - *Weekend*: All weekends outside of late nights
+                - *Weekend*: Saturday and Sunday from 6 AM to midnight
                 - *Rush Hour AM*: Weekdays from 6 am to 9 am
                 - *Midday*: Weekdays from 9 am to 3 pm
                 - *Rush Hour PM*: Weekdays from 3 pm to 7 pm

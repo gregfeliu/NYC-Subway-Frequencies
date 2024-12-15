@@ -25,10 +25,12 @@ venv.bak/
 # Data Directory
 saved_data/
 data/google_transit
-data/google_transit_to_september
+data/google_transit_to_december
 
 # Other Directories
 Notebooks/testing.ipynb
+Notebooks/gtfs_kit_testing.ipynb
+
 
 # Other
 .DS_Store
