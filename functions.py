@@ -5,6 +5,8 @@ import calendar
 from io import StringIO
 import streamlit as st
 import requests
+import gtfs_kit as gk
+import folium
 
 
 def determine_train_time_intervals(arrival_time, day_of_week: str):
@@ -164,3 +166,21 @@ def str_time_to_minutes(timestamp_value: str):
     second = int(timestamp_value[6:8]) / 60
     minutes_past_midnight = hour + minute + second 
     return minutes_past_midnight
+
+def collect_shape_ids_for_route(feed, service: str):
+    week = feed.get_first_week()
+    dates = [week[4], week[5], week[6]]  # First Friday, Saturday & Sunday
+    route_timetables = feed.build_route_timetable(service, dates)
+    unique_shape_ids = route_timetables.drop_duplicates(subset=['route_id', 'service_id', 'shape_id'])
+    # getting all routes in a dictionary
+    shape_dict = {x: None for x in unique_shape_ids['shape_id'].unique()}
+    for shape in shape_dict.keys():
+        shape_id_example = unique_shape_ids[unique_shape_ids['shape_id']==shape]['trip_id']
+        plot = feed.map_trips(trip_ids=shape_id_example, show_stops=True, show_direction=True)
+        shape_dict[shape] = plot
+    return shape_dict
+
+def display_gk_plot(plot):
+    fig = folium.Figure(width=800, height=500)
+    fig.add_child(plot)
+    return fig

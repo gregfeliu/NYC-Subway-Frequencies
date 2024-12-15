@@ -31,16 +31,19 @@ Service,Time Interval,TPH,Avg. Wait
 5,Weekend,6.0,11.0
 6,Evening,9.0,7.0
 6,Late Night,4.0,17.0
-6,Midday,15.0,4.0
-6,Rush Hour AM,17.0,4.0
+6,Midday,11.0,5.0
+6,Rush Hour AM,8.0,8.0
 6,Rush Hour PM,16.0,4.0
 6,Weekend,8.0,8.0
+6X,Midday,4.0,15.0
+6X,Rush Hour AM,9.0,7.0
 7,Evening,13.0,4.0
 7,Late Night,4.0,16.0
-7,Midday,12.0,5.0
-7,Rush Hour AM,25.0,2.0
+7,Midday,11.0,5.0
+7,Rush Hour AM,13.0,5.0
 7,Rush Hour PM,20.0,3.0
 7,Weekend,10.0,6.0
+7X,Rush Hour AM,12.0,5.0
 A,Evening,7.0,9.0
 A,Late Night,6.0,11.0
 A,Midday,8.0,8.0
@@ -72,7 +75,7 @@ F,Evening,7.0,8.0
 F,Late Night,3.0,19.0
 F,Midday,9.0,7.0
 F,Rush Hour AM,13.0,5.0
-F,Rush Hour PM,11.0,5.0
+F,Rush Hour PM,11.0,6.0
 F,Weekend,5.0,13.0
 Fulton Shuttle,Evening,5.0,12.0
 Fulton Shuttle,Late Night,3.0,20.0
@@ -100,7 +103,7 @@ Rock. Shuttle,Weekend,3.0,18.0
 J,Evening,5.0,12.0
 J,Late Night,3.0,19.0
 J,Midday,8.0,8.0
-J,Rush Hour AM,9.0,7.0
+J,Rush Hour AM,7.0,9.0
 J,Rush Hour PM,8.0,7.0
 J,Weekend,6.0,10.0
 L,Evening,13.0,5.0
@@ -115,11 +118,11 @@ M,Midday,8.0,8.0
 M,Rush Hour AM,8.0,8.0
 M,Rush Hour PM,8.0,8.0
 M,Weekend,6.0,10.0
-N,Evening,8.0,7.0
+N,Evening,5.0,12.0
 N,Late Night,3.0,19.0
-N,Midday,14.0,4.0
-N,Rush Hour AM,13.0,5.0
-N,Rush Hour PM,14.0,4.0
+N,Midday,8.0,8.0
+N,Rush Hour AM,7.0,9.0
+N,Rush Hour PM,8.0,8.0
 N,Weekend,5.0,12.0
 Q,Evening,7.0,8.0
 Q,Late Night,3.0,20.0
@@ -133,3 +136,8 @@ R,Midday,8.0,8.0
 R,Rush Hour AM,9.0,7.0
 R,Rush Hour PM,8.0,7.0
 R,Weekend,5.0,13.0
+W,Evening,3.0,20.0
+W,Midday,6.0,10.0
+W,Rush Hour AM,6.0,10.0
+W,Rush Hour PM,6.0,10.0
+Z,Rush Hour AM,2.0,30.0

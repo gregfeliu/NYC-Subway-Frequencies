@@ -1,7 +1,7 @@
 # Schedule Data 
 ## Outputs:
 ##         - All trips in the schedule  
-##         - Info about all Service s 
+##         - Info about all Services 
 ##         - Hourly Frequencies 
 ##         - Train Time Interval Frequencies 
 
@@ -26,7 +26,7 @@ trips_df = pd.read_csv(f"{parent_dir}/data/google_transit/trips.txt")
 # Adjusting the data
 ### finding all non-standard trips to remove later
 non_standard_trips = trips_df[trips_df['service_id'].str.contains('-1')]
-# G, J/Z are having service changes
+# G, J/Z were having service changes
 print(f'The services {non_standard_trips['route_id'].unique()} are having long term service changes')
 
 ### making the times within a 24 hour range -- originally is up to 27 
@@ -44,8 +44,8 @@ stop_times_df = stop_times_df[~stop_times_df['trip_id'].isin(non_standard_trips[
 first_stop_in_trip = stop_times_df[stop_times_df['stop_sequence']==1]
 first_stop_in_trip = first_stop_in_trip.drop(columns=['stop_sequence'])
 first_stop_in_trip['departure_hour'] = first_stop_in_trip['departure_time'].dt.hour
-first_stop_in_trip['route_id'] = [x.split("_")[-1].split('.')[0] 
-                                        for x in first_stop_in_trip['trip_id']]
+# Adding in Route ID
+first_stop_in_trip = first_stop_in_trip.merge(trips_df.drop(columns=['direction_id', 'service_id', 'trip_headsign', 'shape_id']), on='trip_id')
 first_stop_in_trip['shape_id'] = [x.split("_")[-1] for x in first_stop_in_trip['trip_id']]
 first_stop_in_trip = first_stop_in_trip[~first_stop_in_trip.departure_time.isnull()]
 
@@ -73,11 +73,12 @@ first_stop_in_trip['train_time_interval'] = train_time_interval_list
 stop_times_df = pd.read_csv(f"{parent_dir}/data/google_transit/stop_times.txt")
 str_departure_time = [str_time_to_minutes(x) for x in stop_times_df['departure_time']]
 stop_times_df['str_departure_time'] = str_departure_time
+# getting the amount of time each trip takes
 trip_time_diff = stop_times_df.groupby('trip_id')['str_departure_time'].agg(np.ptp)
 valid_trip_times = pd.DataFrame(trip_time_diff).reset_index()
-valid_trip_times['route_id'] = [x.split("_")[-1].split('.')[0] 
-                                        for x in valid_trip_times['trip_id']]
-# Average trip time for each service
+# Adding in Route ID
+valid_trip_times = valid_trip_times.merge(trips_df.drop(columns=['direction_id', 'service_id', 'trip_headsign', 'shape_id']), on='trip_id')
+# Average trip time for each service trip (not the service types independent of the number of times they're run)
 avg_trip_time = pd.DataFrame(valid_trip_times.groupby('route_id')['str_departure_time'].mean()).reset_index()
 avg_trip_time['route_time_seconds'] = [round(x * 60) for x in avg_trip_time['str_departure_time']]
 avg_trip_time['route_time_minutes'] = [round(x, 1) for x in avg_trip_time['str_departure_time']]

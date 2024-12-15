@@ -16,10 +16,12 @@ Service,Day of Week,TPH,Avg. Wait
 5,Weekday,7.0,11.0
 6,Saturday,7.0,10.0
 6,Sunday,6.0,12.0
-6,Weekday,12.0,8.0
+6,Weekday,9.0,9.0
+6X,Weekday,2.0,3.0
 7,Saturday,9.0,9.0
 7,Sunday,8.0,10.0
-7,Weekday,13.0,7.0
+7,Weekday,12.0,8.0
+7X,Weekday,2.0,1.0
 A,Saturday,6.0,10.0
 A,Sunday,6.0,11.0
 A,Weekday,8.0,9.0
@@ -39,6 +41,7 @@ F,Weekday,8.0,10.0
 Fulton Shuttle,Saturday,5.0,13.0
 Fulton Shuttle,Sunday,5.0,13.0
 Fulton Shuttle,Weekday,5.0,13.0
+FX,Weekday,0.0,1.0
 G,Saturday,6.0,12.0
 G,Sunday,5.0,14.0
 G,Weekday,6.0,12.0
@@ -59,10 +62,12 @@ M,Sunday,5.0,14.0
 M,Weekday,6.0,12.0
 N,Saturday,4.0,14.0
 N,Sunday,4.0,14.0
-N,Weekday,10.0,9.0
+N,Weekday,6.0,12.0
 Q,Saturday,6.0,12.0
 Q,Sunday,6.0,13.0
 Q,Weekday,7.0,11.0
 R,Saturday,4.0,14.0
 R,Sunday,4.0,14.0
 R,Weekday,6.0,12.0
+W,Weekday,4.0,7.0
+Z,Weekday,0.0,2.0
