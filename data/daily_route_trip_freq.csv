@@ -5,7 +5,7 @@ Service,Day of Week,TPH,Avg. Wait
 2,Saturday,6.0,12.0
 2,Sunday,5.0,13.0
 2,Weekday,7.0,11.0
-3,Saturday,5.0,13.0
+3,Saturday,5.0,14.0
 3,Sunday,5.0,14.0
 3,Weekday,6.0,12.0
 4,Saturday,6.0,12.0
@@ -48,9 +48,9 @@ G,Weekday,6.0,12.0
 42nd St. Shuttle,Saturday,8.0,7.0
 42nd St. Shuttle,Sunday,7.0,8.0
 42nd St. Shuttle,Weekday,11.0,5.0
-Rock. Shuttle,Saturday,3.0,18.0
-Rock. Shuttle,Sunday,3.0,20.0
-Rock. Shuttle,Weekday,4.0,18.0
+Rock. Shuttle,Saturday,4.0,17.0
+Rock. Shuttle,Sunday,4.0,17.0
+Rock. Shuttle,Weekday,4.0,17.0
 J,Saturday,5.0,13.0
 J,Sunday,5.0,14.0
 J,Weekday,6.0,12.0
