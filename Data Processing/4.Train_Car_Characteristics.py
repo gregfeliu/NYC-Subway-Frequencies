@@ -29,7 +29,7 @@ for key, value in division_split_dict.items():
     try:
         if key == 'GS':
             division_split_dict[key] = 'A'
-        elif int(key):
+        elif int(key[0]):
             division_split_dict[key] = 'A'
     except Exception as e:
         division_split_dict[key] = 'B'
@@ -51,7 +51,7 @@ car_length_dict = division_split_dict.copy()
 for key, value in car_length_dict.items():
     if value == 'A':
         car_length_dict[key] = typical_length_of_cars[value]
-    elif key in ['B', 'D', 'N', 'Q', 'FS', 'SI']:
+    elif key in ['B', 'D', 'N', 'Q', 'FS', 'SI', 'W']:
         car_length_dict[key] = typical_length_of_cars['B2']
 # undercounting the true capacity (it's not clear how often 75 foot car train sets are used)
 # not sure if I'm undercounting because the number of cars/length of cars both equal 
@@ -63,7 +63,7 @@ train_area_df['car_width'] = [typical_width_of_cars[x] for x in train_area_df['d
 
 cars_per_train_dict = dict(zip(unique_lines, [None for x in range(len(unique_lines))]))
 # B1 division
-for service in ['J', 'L', 'M', 'B', 'D', 'N', 'Q']:
+for service in ['J', 'L', 'M', 'B', 'D', 'N', 'Q', 'W', 'Z', 'C']:
     cars_per_train_dict[service] = 8
 # I can't determine which one is done using the GTFS data
 # Shuttles
@@ -72,6 +72,7 @@ cars_per_train_dict['H'] = 4
 cars_per_train_dict['GS'] = 6
 # Other
 cars_per_train_dict['SI'] = 4
+# this is changing slightly as the R211T trains are inserted into service (20% more capacity)
 cars_per_train_dict['G'] = 5
 cars_per_train_dict['7'] = 11
 
@@ -92,7 +93,7 @@ for idx in range(len(train_area_df)):
 # capacity of A div (e.g.: R142) ~ 180, B1 div (R160A) ~240, B2 (scaled from B1 div) = 300
 # also, GS doesn't have seats which slightly increases capacity
 train_area_df['train_length'] = train_area_df['car_length'] * train_area_df['number_of_cars']
-train_area_df['trainset_area'] = train_area_df['train_length'] * train_area_df['car_width']
+train_area_df['trainset_area'] = round(train_area_df['train_length'] * train_area_df['car_width'])
 train_area_dict = dict(zip(train_area_df.route_id, train_area_df['trainset_area']))
 capacity_per_car = []
 for x in range(train_area_df.shape[0]):
