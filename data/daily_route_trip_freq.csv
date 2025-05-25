@@ -34,23 +34,22 @@ D,Sunday,4.0,14.0
 D,Weekday,6.0,12.0
 E,Saturday,4.0,14.0
 E,Sunday,4.0,15.0
-E,Weekday,9.0,10.0
+E,Weekday,8.0,10.0
 F,Saturday,4.0,14.0
 F,Sunday,4.0,15.0
 F,Weekday,8.0,10.0
 Fulton Shuttle,Saturday,5.0,13.0
 Fulton Shuttle,Sunday,5.0,13.0
 Fulton Shuttle,Weekday,5.0,13.0
-FX,Weekday,0.0,1.0
 G,Saturday,6.0,12.0
 G,Sunday,5.0,14.0
 G,Weekday,6.0,12.0
 42nd St. Shuttle,Saturday,8.0,7.0
 42nd St. Shuttle,Sunday,7.0,8.0
 42nd St. Shuttle,Weekday,11.0,5.0
-Rock. Shuttle,Saturday,4.0,17.0
-Rock. Shuttle,Sunday,4.0,17.0
-Rock. Shuttle,Weekday,4.0,17.0
+Rock. Shuttle,Saturday,3.0,18.0
+Rock. Shuttle,Sunday,3.0,20.0
+Rock. Shuttle,Weekday,4.0,18.0
 J,Saturday,5.0,13.0
 J,Sunday,5.0,14.0
 J,Weekday,6.0,12.0

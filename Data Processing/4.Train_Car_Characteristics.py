@@ -96,13 +96,14 @@ train_area_df['train_length'] = train_area_df['car_length'] * train_area_df['num
 train_area_df['trainset_area'] = round(train_area_df['train_length'] * train_area_df['car_width'])
 train_area_dict = dict(zip(train_area_df.route_id, train_area_df['trainset_area']))
 capacity_per_car = []
+# getting capacity from this MTA source (for rush hour): ## updated to use MTA official time periods: https://www.mta.info/document/152001
 for x in range(train_area_df.shape[0]):
     if train_area_df['car_length'][x] == 15.5:
         capacity_per_car.append(180)
     elif train_area_df['car_length'][x] == 18.4:
-        capacity_per_car.append(240)  
+        capacity_per_car.append(248)  
     elif train_area_df['car_length'][x] == 23:
-        capacity_per_car.append(300)  
+        capacity_per_car.append(278)  
 train_area_df['capacity_per_car'] = capacity_per_car
 train_area_df['capacity'] = [int(train_area_df['number_of_cars'][x] * train_area_df['capacity_per_car'][x])
                              for x in range(train_area_df.shape[0])]

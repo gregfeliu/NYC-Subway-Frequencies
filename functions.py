@@ -6,7 +6,7 @@ from io import StringIO
 import streamlit as st
 import requests
 
-
+## ideally this would use MTA official time periods: https://www.mta.info/document/152001
 def determine_train_time_intervals(arrival_time, day_of_week: str):
     arrival_time = arrival_time.time()
     train_time_interval = None
