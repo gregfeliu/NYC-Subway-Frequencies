@@ -21,7 +21,6 @@ first_stop_in_trip = pd.read_csv(f"{parent_dir}/saved_data/first_stop_in_trip.cs
 typical_length_of_cars = {'A': 15.5, 'B1': 18.4, 'B2':23}
 typical_width_of_cars = {'A': 2.7, 'B': 3.1}
 
-
 unique_lines = list(first_stop_in_trip.route_id.unique())
 division_split_dict = dict(zip(unique_lines
                              , [None for x in range(len(unique_lines))]))
@@ -39,19 +38,22 @@ train_area_df.columns = ['route_id', 'division']
 
 # Info about the Car Lengths for B Division Services:
 # - According to the [latest track assignments](https://erausa.org/pdf/bulletin/2020s/2024/2024-02-bulletin.pdf) (Dec. 28) and Wikipedia's information about the [NYC Rolling Stock](https://en.wikipedia.org/wiki/New_York_City_Subway_rolling_stock#Current_fleet), here's the B1 and B2 breakdown of B-division cars in IND/BMT Routes:
-#     - Because of track geometry, the J, L, M, Z lines *must* use the 60 foot cars
-#     - The B, D, N, Q, FS, and SI *exclusively* use the 75 foot cars
-#     - The A, C (was [introduced in 2017](https://www.amny.com/transit/c-train-longer-cars-1-15512261/) for this line), and H use a mix of 60 foot and 75 car train sets
+#     - Because of track geometry and station lengths, the J, L, M, Z lines *must* use the 60 foot cars
+#     - The B, D, N, Q, FS, and SI *exclusively* use the 75 foot cars (although this is evolving)
+#     - The A, C (was [introduced in 2017](https://www.amny.com/transit/c-train-longer-cars-1-15512261/) 
+#           for this line), and H use a mix of 60 foot and 75 car train sets
 #     - The other lines *could* use 75 foot cars but currently only use 60 foot cars
-# - I believe the yards are a limiting factor (not 100% sure, though)
 
-# giving all values a car length
+# giving all car lengths by service 
+# Some complications to this summarized here: https://www.etany.org/statements/impeding-progress-costing-riders-opto 
 # we'll multiply their value by the number of cars to get the final length
 car_length_dict = division_split_dict.copy()
+b_div_services_75 = ['B', 'D', 'N', 'FS', 'SI', 'W']
+bmt_eastern_division = ['J', 'Z', 'L', 'M']
 for key, value in car_length_dict.items():
     if value == 'A':
         car_length_dict[key] = typical_length_of_cars[value]
-    elif key in ['B', 'D', 'N', 'Q', 'FS', 'SI', 'W']:
+    elif key in b_div_services_75:
         car_length_dict[key] = typical_length_of_cars['B2']
 # undercounting the true capacity (it's not clear how often 75 foot car train sets are used)
 # not sure if I'm undercounting because the number of cars/length of cars both equal 
@@ -63,18 +65,19 @@ train_area_df['car_width'] = [typical_width_of_cars[x] for x in train_area_df['d
 
 cars_per_train_dict = dict(zip(unique_lines, [None for x in range(len(unique_lines))]))
 # B1 division
-for service in ['J', 'L', 'M', 'B', 'D', 'N', 'Q', 'W', 'Z', 'C']:
+for service in ['C'] + b_div_services_75 + bmt_eastern_division:
     cars_per_train_dict[service] = 8
-# I can't determine which one is done using the GTFS data
+# I can't determine which one is used from the GTFS data
 # Shuttles
 cars_per_train_dict['FS'] = 2
-cars_per_train_dict['H'] = 4
+cars_per_train_dict['H'] = 5
 cars_per_train_dict['GS'] = 6
 # Other
 cars_per_train_dict['SI'] = 4
-# this is changing slightly as the R211T trains are inserted into service (20% more capacity)
+# this is changing slightly as the R211T trains are inserted into service (20% more capacity because of fewer seats)
 cars_per_train_dict['G'] = 5
 cars_per_train_dict['7'] = 11
+cars_per_train_dict['7X'] = 11
 
 train_area_df['number_of_cars'] = train_area_df['route_id'].replace(cars_per_train_dict)
 for idx in range(len(train_area_df)):
@@ -91,7 +94,7 @@ for idx in range(len(train_area_df)):
 # train_area_df['people_per_sq_meter'] = train_area_df['capacity'] / train_area_df['trainset_area']
 
 # capacity of A div (e.g.: R142) ~ 180, B1 div (R160A) ~240, B2 (scaled from B1 div) = 300
-# also, GS doesn't have seats which slightly increases capacity
+# GS doesn't have seats which slightly increases capacity
 train_area_df['train_length'] = train_area_df['car_length'] * train_area_df['number_of_cars']
 train_area_df['trainset_area'] = round(train_area_df['train_length'] * train_area_df['car_width'])
 train_area_dict = dict(zip(train_area_df.route_id, train_area_df['trainset_area']))

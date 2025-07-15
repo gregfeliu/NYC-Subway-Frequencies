@@ -18,6 +18,9 @@ sys.path.append(parent_dir)
 from functions import *
 
 # Only making an api call if we don't already have the hourly station ridership data 
+## next time use origin destination data set by day of week, hour and complex 
+## https://data.ny.gov/Transportation/MTA-Subway-Origin-Destination-Ridership-Estimate-2/jsu2-fbtj/explore/query/SELECT%0A%20%20%60year%60%2C%0A%20%20%60day_of_week%60%2C%0A%20%20%60hour_of_day%60%2C%0A%20%20%60origin_station_complex_id%60%2C%0A%20%20sum%28%60estimated_average_ridership%60%29%20AS%20%60sum_estimated_average_ridership%60%0AGROUP%20BY%0A%20%20%60year%60%2C%0A%20%20%60day_of_week%60%2C%0A%20%20%60hour_of_day%60%2C%0A%20%20%60origin_station_complex_id%60%0AORDER%20BY%20%60sum_estimated_average_ridership%60%20DESC%20NULL%20LAST/page/aggregate
+
 try:
     hourly_station_ridership = pd.read_csv(f"{parent_dir}/saved_data/hourly_station_ridership.csv", index_col=0)
     print("Data already saved in local directory.")
@@ -86,23 +89,18 @@ route_id_ridership['weekday_ridership_adj'] = [route_id_ridership['route_id_ride
                                                 else route_id_ridership['route_id_ridership'][idx]
                                                 for idx in range(len(route_id_ridership))]
 route_id_ridership_grouped = pd.DataFrame(route_id_ridership.groupby('route_id').sum()['weekday_ridership_adj']).reset_index()
-route_id_ridership_grouped['weekday_ridership_adj'] = route_id_ridership_grouped['weekday_ridership_adj'] * 52.14
-route_id_ridership_grouped.columns = ['route_id', 'yearly_ridership']
+route_id_ridership_grouped['weekday_ridership_adj'] = round((route_id_ridership_grouped['weekday_ridership_adj'] * 52.14) / 1000000)
+route_id_ridership_grouped.columns = ['route_id', 'yearly_ridership_MM']
+# including the average number of subway transfers for a more realistic estimate 
+# source for unlinked passenger trips: https://en.wikipedia.org/wiki/New_York_City_Subway citing https://www.apta.com/wp-content/uploads/2024-Q4-Ridership-APTA.pdf (may include SIR which is ~5.6MM)
+unlinked_trips_2024 = 2040132000
+# source for linked passenger trips 2024: https://data.ny.gov/Transportation/MTA-Subway-Hourly-Ridership-2020-2024/wujg-7c2s/explore/query/SELECT%20%60transit_mode%60%2C%20sum%28%60ridership%60%29%20AS%20%60sum_ridership%60%0AWHERE%0A%20%20%60transit_timestamp%60%0A%20%20%20%20BETWEEN%20%222024-01-01T00%3A00%3A00%22%20%3A%3A%20floating_timestamp%0A%20%20%20%20AND%20%222025-01-01T00%3A00%3A00%22%20%3A%3A%20floating_timestamp%0AGROUP%20BY%20%60transit_mode%60%0AHAVING%20caseless_one_of%28%60transit_mode%60%2C%20%22subway%22%29/page/filter
+linked_trips_2024 = 1205979355
+services_per_linked_trip = unlinked_trips_2024 / linked_trips_2024
+route_id_ridership_grouped['yearly_ridership_including_transfers_MM'] = round(route_id_ridership_grouped['yearly_ridership_MM'] * services_per_linked_trip)
 
 # next step is to take into account train area (mostly because the Grand Central Shuttle is suspect)
-route_id_ridership_grouped = route_id_ridership_grouped.sort_values(by='yearly_ridership', ascending=False)
-
-
-
-
-
-
-
-
-
-
-
-
+route_id_ridership_grouped = route_id_ridership_grouped.sort_values(by='yearly_ridership_MM', ascending=False)
 
 # Saving all Data 
 if not os.path.exists(f'{parent_dir}/saved_data'):
