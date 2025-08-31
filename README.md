@@ -33,7 +33,7 @@ As you can see, there's quite a lot of variation in the amount of time you might
 ### The 15 Minute (Subway) City
 Recently there's a lot of talk about the ["15 minute city"](https://en.wikipedia.org/wiki/15-minute_city). The idea of this is that many essential services can be found within 15 minutes of your home. I wanted to extend this concept to transit: how much time does it take for someone living in a certain location to access and use reliable rapid transit? In this case, being near a station isn't enough: the person needs to also enter the train and get moving to their destination. To visualize this, I use the average train frequency for a station's all non-late night hours and the constant walking speed of 3 miles per hour. I then can calculate the area around a station that will allow someone to enter a moving train at that amount of time or less. The white areas in this gif allow someone to enter a train in a given amount of time:
 
-<img src="images/movie.gif" height="548">
+<img src="images/movie.gif" height="400" width="50">
 
 As you can see, some stations are much more desirable to live near than others. Just to take a clear example, being at the end of the Bay Ridge services (far bottom left in Brooklyn) is much worse than being near Coney Island (far bottom of greyed-out Brooklyn) even though both are terminal stations: the Coney Island station has a visible catchment area starting at 5 minutes whereas the Bay Ridge one doesn't have one until 15 minutes. One obvious reason for this is that the Bay Ridge station is served by the R train whereas the Coney Island - Stillwell Avenue station is served by the D, N, Q, F and \<F> trains. 
 
