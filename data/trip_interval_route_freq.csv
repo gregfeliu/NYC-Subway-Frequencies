@@ -52,7 +52,7 @@ A,Rush Hour PM,12.0,5.0
 A,Weekend,6.0,10.0
 B,Evening,3.0,21.0
 B,Midday,7.0,8.0
-B,Rush Hour AM,6.0,10.0
+B,Rush Hour AM,7.0,9.0
 B,Rush Hour PM,7.0,9.0
 C,Evening,4.0,14.0
 C,Midday,7.0,8.0
@@ -60,7 +60,7 @@ C,Rush Hour AM,6.0,10.0
 C,Rush Hour PM,6.0,10.0
 C,Weekend,4.0,14.0
 D,Evening,6.0,10.0
-D,Late Night,3.0,20.0
+D,Late Night,3.0,19.0
 D,Midday,8.0,8.0
 D,Rush Hour AM,7.0,8.0
 D,Rush Hour PM,8.0,8.0
@@ -68,13 +68,13 @@ D,Weekend,5.0,12.0
 E,Evening,8.0,8.0
 E,Late Night,3.0,19.0
 E,Midday,9.0,6.0
-E,Rush Hour AM,11.0,6.0
-E,Rush Hour PM,12.0,5.0
+E,Rush Hour AM,13.0,5.0
+E,Rush Hour PM,13.0,5.0
 E,Weekend,5.0,12.0
 F,Evening,7.0,8.0
 F,Late Night,3.0,19.0
 F,Midday,9.0,7.0
-F,Rush Hour AM,12.0,5.0
+F,Rush Hour AM,13.0,5.0
 F,Rush Hour PM,11.0,6.0
 F,Weekend,5.0,13.0
 Fulton Shuttle,Evening,5.0,12.0
@@ -86,7 +86,7 @@ Fulton Shuttle,Weekend,6.0,11.0
 G,Evening,7.0,9.0
 G,Late Night,3.0,20.0
 G,Midday,8.0,8.0
-G,Rush Hour AM,8.0,8.0
+G,Rush Hour AM,7.0,8.0
 G,Rush Hour PM,8.0,8.0
 G,Weekend,6.0,10.0
 42nd St. Shuttle,Evening,13.0,5.0
@@ -104,7 +104,7 @@ J,Evening,5.0,12.0
 J,Late Night,3.0,19.0
 J,Midday,8.0,8.0
 J,Rush Hour AM,7.0,9.0
-J,Rush Hour PM,8.0,7.0
+J,Rush Hour PM,8.0,8.0
 J,Weekend,6.0,10.0
 L,Evening,13.0,5.0
 L,Late Night,4.0,16.0
@@ -138,6 +138,6 @@ R,Rush Hour PM,8.0,7.0
 R,Weekend,5.0,13.0
 W,Evening,3.0,20.0
 W,Midday,6.0,10.0
-W,Rush Hour AM,6.0,10.0
+W,Rush Hour AM,6.0,11.0
 W,Rush Hour PM,6.0,10.0
 Z,Rush Hour AM,2.0,30.0
