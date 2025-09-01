@@ -104,12 +104,40 @@ for x in range(train_area_df.shape[0]):
     if train_area_df['car_length'][x] == 15.5:
         capacity_per_car.append(180)
     elif train_area_df['car_length'][x] == 18.4:
-        capacity_per_car.append(248)  
+        capacity_per_car.append(248)  # very similar number for R211
     elif train_area_df['car_length'][x] == 23:
         capacity_per_car.append(278)  
 train_area_df['capacity_per_car'] = capacity_per_car
 train_area_df['capacity'] = [int(train_area_df['number_of_cars'][x] * train_area_df['capacity_per_car'][x])
                              for x in range(train_area_df.shape[0])]
+
+# The 5, M, and Lefferts Blvd Shuttle (A) are all slightly shorter at late nights and weekends (ignoring Rockaway Shuttle train length extensions (summer))
+# https://www.etany.org/statements/impeding-progress-costing-riders-opto
+# manually entering in their data and adding a late night and weekend column
+train_area_df['time_based_change'] = False 
+train_area_df['time'] = None 
+# changing it for 5 and M (A won't change ridership values)
+m_index = train_area_df.loc[train_area_df['route_id']=='M'].index.values[0]
+train_area_df.loc[m_index, 'time_based_change'] = True
+five_index = train_area_df.loc[train_area_df['route_id']=='5'].index.values[0]
+train_area_df.loc[five_index, 'time_based_change'] = True
+
+# add time frame column 
+
+# new data frame with new values 
+time_adjustments_df = train_area_df[train_area_df['route_id'].isin(['5', 'M'])==True]
+time_adjustments_df['time'] = 'Late Night'
+def divide_values_by_two(column_list, df):
+    for column in column_list: 
+        df[column] = df[column] / 2
+    return df
+time_adjustments_df = divide_values_by_two(['number_of_cars', 'train_length', 'trainset_area', 'capacity_per_car', 'capacity'], time_adjustments_df)
+time_adjustments_df = pd.concat([time_adjustments_df, time_adjustments_df[time_adjustments_df['route_id']=='M']])
+time_adjustments_df.reset_index(drop=True, inplace=True)
+time_adjustments_df.loc[2, 'time'] = 'Weekend'
+
+train_area_df = pd.concat([train_area_df, time_adjustments_df])
+
 
 # Saving the DataFrame
 if not os.path.exists(f'{parent_dir}/saved_data'):
