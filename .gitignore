@@ -25,8 +25,9 @@ venv.bak/
 # Data Directory
 saved_data/
 data/google_transit
-data/google_transit_to_january
-data/google_transit_to_december
+data/google_transit_to_june
+data/google_transit_to_may
+one_off_data/
 
 # Other Directories
 Notebooks/testing.ipynb
