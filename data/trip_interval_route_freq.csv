@@ -54,7 +54,7 @@ B,Evening,3.0,21.0
 B,Midday,7.0,8.0
 B,Rush Hour AM,7.0,9.0
 B,Rush Hour PM,7.0,9.0
-C,Evening,4.0,14.0
+C,Evening,4.0,15.0
 C,Midday,7.0,8.0
 C,Rush Hour AM,6.0,10.0
 C,Rush Hour PM,6.0,10.0
@@ -98,7 +98,7 @@ Rock. Shuttle,Evening,4.0,17.0
 Rock. Shuttle,Late Night,3.0,20.0
 Rock. Shuttle,Midday,4.0,16.0
 Rock. Shuttle,Rush Hour AM,3.0,18.0
-Rock. Shuttle,Rush Hour PM,4.0,15.0
+Rock. Shuttle,Rush Hour PM,4.0,14.0
 Rock. Shuttle,Weekend,3.0,18.0
 J,Evening,5.0,12.0
 J,Late Night,3.0,19.0
@@ -109,8 +109,8 @@ J,Weekend,6.0,10.0
 L,Evening,13.0,5.0
 L,Late Night,4.0,16.0
 L,Midday,14.0,4.0
-L,Rush Hour AM,14.0,4.0
-L,Rush Hour PM,14.0,4.0
+L,Rush Hour AM,15.0,4.0
+L,Rush Hour PM,15.0,4.0
 L,Weekend,12.0,5.0
 M,Evening,5.0,13.0
 M,Late Night,3.0,18.0

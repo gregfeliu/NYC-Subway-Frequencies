@@ -158,7 +158,7 @@ elif tab_selector == 'Appendix':
                    in one direction then the frequency in the actual service direction is shown
                    as half of what it actually is""")
     st.divider()
-    st.markdown("""This app uses the [static MTA GTFS Schedule from August 11, 2025 to November 1s, 2025](http://web.mta.info/developers/data/nyct/subway/google_transit.zip). 
+    st.markdown("""This app uses the [static MTA GTFS Schedule from November 2nd, 2025 to December 7th, 2025](http://web.mta.info/developers/data/nyct/subway/google_transit.zip). 
             The schedule is valid for all planned trips taking into account long term service outages/reroutes. """)
     st.caption("To learn more about the conclusions of this project, go to the project's [GitHub page](https://github.com/gregfeliu/NYC-Subway-Frequencies/tree/main?tab=readme-ov-file)")
 
