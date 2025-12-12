@@ -127,6 +127,8 @@ total_ridership_25 = 638233041
 # 8% increase
 yearly_change_ratio = total_ridership_25 / total_ridership_24
 route_id_ridership_grouped['Adjusted_unlinked_2025'] = route_id_ridership_grouped['yearly_ridership_unlinked_MM'] * yearly_change_ratio
+## rounding to thousands place
+route_id_ridership_grouped['Adjusted_unlinked_2025_daily_thousands'] = round((route_id_ridership_grouped['Adjusted_unlinked_2025'] / 365.25) * 1000)
 route_id_ridership_grouped['crowdedness_unlinked'] = (route_id_ridership_grouped['Adjusted_unlinked_2025'] * 1000000) / route_id_ridership_grouped['frequency_capacity']
 route_id_ridership_grouped = round(route_id_ridership_grouped, 2)
 route_id_ridership_grouped = route_id_ridership_grouped.sort_values(by='yearly_ridership_MM', ascending=False).reset_index(drop=True)
