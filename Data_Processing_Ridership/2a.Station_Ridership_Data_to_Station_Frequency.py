@@ -95,6 +95,11 @@ complex_frequency_ridership['route_id_ridership'] = [complex_frequency_ridership
                                                     (complex_frequency_ridership['frequency_capacity'][idx] 
                                                      / complex_frequency_ridership['frequency_capacity_total'][idx])
                                                     for idx in range(len(complex_frequency_ridership))]
+# saving data to get day + hour ridership for each line
+complex_frequency_ridership.to_csv(f"{parent_dir}/saved_data/routes_day_hour_station_ridership.csv")
+day_hour_ridership = pd.DataFrame(complex_frequency_ridership.groupby(['route_id', 'day_of_week', 'hour'])['route_id_ridership'].sum())
+day_hour_ridership.to_csv(f"{parent_dir}/saved_data/routes_day_hour_ridership.csv")
+
 # re-transform single weekday to 5 days
 route_id_ridership = complex_frequency_ridership.groupby(['route_id'
                                                           , 'day_of_week']).sum(['route_id_ridership']).reset_index()
@@ -109,7 +114,7 @@ route_id_ridership['frequency_capacity_adj'] = [route_id_ridership['frequency_ca
 route_id_ridership_grouped = pd.DataFrame(route_id_ridership.groupby('route_id').sum()[['weekday_ridership_adj', 'frequency_capacity_adj']]).reset_index()
 route_id_ridership_grouped['weekday_ridership_adj'] = (route_id_ridership_grouped['weekday_ridership_adj'] * 52.14)
 route_id_ridership_grouped['crowdedness_linked'] = route_id_ridership_grouped['weekday_ridership_adj'] / route_id_ridership_grouped['frequency_capacity_adj'] 
-route_id_ridership_grouped['weekday_ridership_adj']  = route_id_ridership_grouped['weekday_ridership_adj'] / 1000000
+route_id_ridership_grouped['weekday_ridership_adj'] = route_id_ridership_grouped['weekday_ridership_adj'] / 1000000
 route_id_ridership_grouped.columns = ['route_id', 'yearly_ridership_MM', 'frequency_capacity', 'crowdedness']
 # including the average number of subway transfers for a more realistic estimate 
 # source for unlinked passenger trips: https://en.wikipedia.org/wiki/New_York_City_Subway citing https://www.apta.com/wp-content/uploads/2024-Q4-Ridership-APTA.pdf (may include SIR which is ~5.6MM)
