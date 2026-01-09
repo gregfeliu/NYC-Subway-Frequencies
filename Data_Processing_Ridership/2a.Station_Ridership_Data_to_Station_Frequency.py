@@ -101,8 +101,7 @@ day_hour_ridership = pd.DataFrame(complex_frequency_ridership.groupby(['route_id
 day_hour_ridership.to_csv(f"{parent_dir}/saved_data/routes_day_hour_ridership.csv")
 
 # re-transform single weekday to 5 days
-route_id_ridership = complex_frequency_ridership.groupby(['route_id'
-                                                          , 'day_of_week']).sum(['route_id_ridership']).reset_index()
+route_id_ridership = complex_frequency_ridership.groupby(['route_id', 'day_of_week']).sum(['route_id_ridership']).reset_index()
 route_id_ridership['weekday_ridership_adj'] = [route_id_ridership['route_id_ridership'][idx]*5 
                                                 if route_id_ridership['day_of_week'][idx]=='Weekday'
                                                 else route_id_ridership['route_id_ridership'][idx]
@@ -111,16 +110,21 @@ route_id_ridership['frequency_capacity_adj'] = [route_id_ridership['frequency_ca
                                                 if route_id_ridership['day_of_week'][idx]=='Weekday'
                                                 else route_id_ridership['frequency_capacity'][idx]
                                                 for idx in range(len(route_id_ridership))]
-route_id_ridership_grouped = pd.DataFrame(route_id_ridership.groupby('route_id').sum()[['weekday_ridership_adj', 'frequency_capacity_adj']]).reset_index()
+route_id_ridership['daily_ridership_weekday'] = [route_id_ridership['route_id_ridership'][idx] 
+                                                if route_id_ridership['day_of_week'][idx]=='Weekday'
+                                                else 0
+                                                for idx in range(len(route_id_ridership))]
+route_id_ridership_grouped = pd.DataFrame(route_id_ridership.groupby('route_id').sum()[['weekday_ridership_adj', 'frequency_capacity_adj', 'daily_ridership_weekday']]).reset_index()
 route_id_ridership_grouped['weekday_ridership_adj'] = (route_id_ridership_grouped['weekday_ridership_adj'] * 52.14)
 route_id_ridership_grouped['crowdedness_linked'] = route_id_ridership_grouped['weekday_ridership_adj'] / route_id_ridership_grouped['frequency_capacity_adj'] 
 route_id_ridership_grouped['weekday_ridership_adj'] = route_id_ridership_grouped['weekday_ridership_adj'] / 1000000
-route_id_ridership_grouped.columns = ['route_id', 'yearly_ridership_MM', 'frequency_capacity', 'crowdedness']
+route_id_ridership_grouped['daily_ridership_weekday'] = route_id_ridership_grouped['daily_ridership_weekday'] / 1000
+route_id_ridership_grouped.columns = ['route_id', 'yearly_ridership_MM', 'frequency_capacity', 'daily_ridership_weekday', 'crowdedness']
 # including the average number of subway transfers for a more realistic estimate 
 # source for unlinked passenger trips: https://en.wikipedia.org/wiki/New_York_City_Subway citing https://www.apta.com/wp-content/uploads/2024-Q4-Ridership-APTA.pdf (may include SIR which is ~5.6MM)
 unlinked_trips_2024 = 2040132000
 # source for linked passenger trips 2024: https://data.ny.gov/Transportation/MTA-Subway-Hourly-Ridership-2020-2024/wujg-7c2s/explore/query/SELECT%20%60transit_mode%60%2C%20sum%28%60ridership%60%29%20AS%20%60sum_ridership%60%0AWHERE%0A%20%20%60transit_timestamp%60%0A%20%20%20%20BETWEEN%20%222024-01-01T00%3A00%3A00%22%20%3A%3A%20floating_timestamp%0A%20%20%20%20AND%20%222025-01-01T00%3A00%3A00%22%20%3A%3A%20floating_timestamp%0AGROUP%20BY%20%60transit_mode%60%0AHAVING%20caseless_one_of%28%60transit_mode%60%2C%20%22subway%22%29/page/filter
-linked_trips_2024 = 1205979355
+linked_trips_2024 = 1206083955
 services_per_linked_trip = unlinked_trips_2024 / linked_trips_2024
 route_id_ridership_grouped['yearly_ridership_unlinked_MM'] = route_id_ridership_grouped['yearly_ridership_MM'] * services_per_linked_trip
 # 2024 ridership (Q1 and Q2)
@@ -133,7 +137,7 @@ total_ridership_25 = 638233041
 yearly_change_ratio = total_ridership_25 / total_ridership_24
 route_id_ridership_grouped['Adjusted_unlinked_2025'] = route_id_ridership_grouped['yearly_ridership_unlinked_MM'] * yearly_change_ratio
 ## rounding to thousands place
-route_id_ridership_grouped['Adjusted_unlinked_2025_daily_thousands'] = round((route_id_ridership_grouped['Adjusted_unlinked_2025'] / 365.25) * 1000)
+route_id_ridership_grouped['Adjusted_unlinked_2025_daily_thousands'] = route_id_ridership_grouped['daily_ridership_weekday'] * services_per_linked_trip * yearly_change_ratio
 route_id_ridership_grouped['crowdedness_unlinked'] = (route_id_ridership_grouped['Adjusted_unlinked_2025'] * 1000000) / route_id_ridership_grouped['frequency_capacity']
 route_id_ridership_grouped = round(route_id_ridership_grouped, 2)
 route_id_ridership_grouped = route_id_ridership_grouped.sort_values(by='yearly_ridership_MM', ascending=False).reset_index(drop=True)
