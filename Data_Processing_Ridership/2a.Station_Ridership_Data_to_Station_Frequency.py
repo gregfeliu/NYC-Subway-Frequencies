@@ -121,6 +121,9 @@ route_id_ridership_grouped['weekday_ridership_adj'] = route_id_ridership_grouped
 route_id_ridership_grouped['daily_ridership_weekday'] = route_id_ridership_grouped['daily_ridership_weekday'] / 1000
 route_id_ridership_grouped.columns = ['route_id', 'yearly_ridership_MM', 'frequency_capacity', 'daily_ridership_weekday', 'crowdedness']
 # including the average number of subway transfers for a more realistic estimate 
+# (I found other ratios online) e.g.: 
+#   - 1.49 (using values in this press release: https://www.governor.ny.gov/news/governor-hochul-highlights-record-breaking-year-performance-and-ridership-mta-2025)
+#   - 1.84 (using 2024 total ridership and federal data on unlinked passenger trips: https://www.transit.dot.gov/sites/fta.dot.gov/files/transit_agency_profile_doc/2024/20008.pdf)
 # source for unlinked passenger trips: https://en.wikipedia.org/wiki/New_York_City_Subway citing https://www.apta.com/wp-content/uploads/2024-Q4-Ridership-APTA.pdf (may include SIR which is ~5.6MM)
 unlinked_trips_2024 = 2040132000
 # source for linked passenger trips 2024: https://data.ny.gov/Transportation/MTA-Subway-Hourly-Ridership-2020-2024/wujg-7c2s/explore/query/SELECT%20%60transit_mode%60%2C%20sum%28%60ridership%60%29%20AS%20%60sum_ridership%60%0AWHERE%0A%20%20%60transit_timestamp%60%0A%20%20%20%20BETWEEN%20%222024-01-01T00%3A00%3A00%22%20%3A%3A%20floating_timestamp%0A%20%20%20%20AND%20%222025-01-01T00%3A00%3A00%22%20%3A%3A%20floating_timestamp%0AGROUP%20BY%20%60transit_mode%60%0AHAVING%20caseless_one_of%28%60transit_mode%60%2C%20%22subway%22%29/page/filter

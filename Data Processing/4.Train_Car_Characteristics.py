@@ -12,7 +12,6 @@ parent_dir = os.path.dirname(current_dir)
 sys.path.append(parent_dir)
 from functions import *
 
-
 ### Data Imports
 first_stop_in_trip = pd.read_csv(f"{parent_dir}/saved_data/first_stop_in_trip.csv", index_col=0)
 
@@ -101,7 +100,10 @@ train_area_dict = dict(zip(train_area_df.route_id, train_area_df['trainset_area'
 capacity_per_car = []
 # getting capacity from this MTA source (for rush hour): ## updated to use MTA official time periods: https://www.mta.info/document/152001
 for x in range(train_area_df.shape[0]):
-    if train_area_df['car_length'][x] == 15.5:
+    # making a special case for Grand Central Shuttle since seats are removed: https://ny1.com/nyc/all-boroughs/transit/2017/11/30/some-seats-removed-from-part-42nd-street-shuttle-manhattan-nyc-mta
+    if train_area_df['route_id'][x] == 'GS':
+        capacity_per_car.append(210)
+    elif train_area_df['car_length'][x] == 15.5:
         capacity_per_car.append(180)
     elif train_area_df['car_length'][x] == 18.4:
         capacity_per_car.append(248)  # very similar number for R211
@@ -123,7 +125,6 @@ five_index = train_area_df.loc[train_area_df['route_id']=='5'].index.values[0]
 train_area_df.loc[five_index, 'time_based_change'] = True
 
 # add time frame column 
-
 # new data frame with new values 
 time_adjustments_df = train_area_df[train_area_df['route_id'].isin(['5', 'M'])==True]
 time_adjustments_df['time'] = 'Late Night'
