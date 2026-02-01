@@ -25,11 +25,6 @@ venv.bak/
 # Data Directory
 saved_data/
 data/google_transit/
-data/google_transit_to_jan/*
-data/google_transit_to_may
-data/google_transit_to_dec
-data/google_transit_to_june
-data/google_transit_to_nov
 one_off_data/
 
 # Other Directories
