@@ -97,6 +97,9 @@ complex_frequency_ridership['route_id_ridership'] = [complex_frequency_ridership
                                                     for idx in range(len(complex_frequency_ridership))]
 # saving data to get day + hour ridership for each line
 complex_frequency_ridership.to_csv(f"{parent_dir}/saved_data/routes_day_hour_station_ridership.csv")
+# also saving to github-> outputs
+complex_frequency_ridership.to_csv(f"{parent_dir}/Outputs/routes_day_hour_station_ridership.csv")
+
 day_hour_ridership = pd.DataFrame(complex_frequency_ridership.groupby(['route_id', 'day_of_week', 'hour'])['route_id_ridership'].sum())
 day_hour_ridership.to_csv(f"{parent_dir}/saved_data/routes_day_hour_ridership.csv")
 
